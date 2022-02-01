@@ -32,8 +32,7 @@ function App() {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     const secret = (data.get('password') || '') as string
-    if (secret.length > 5) {
-      console.log(`the password is long enough: ${secret}. Trying to log in`)
+    if (secret.length > 0) {
       login(secret)
         .then(token => {
           console.log(`Got token back: `, token, 'reloading with cookie')
