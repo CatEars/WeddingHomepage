@@ -13,8 +13,8 @@ const storageArea = process.env['STORAGE_AREA'] || './'
 const secret = process.env['SECRET'] || 'HelloWorld'
 const userToken = process.env['USER_TOKEN'] || '1cde9145-377a-46cb-90be-3e3d765f3409'
 
-const loginRoot = './login-build'
-const contentRoot = './content-build'
+const loginRoot = process.env['LOGIN_ROOT'] || './login-build'
+const contentRoot = process.env['CONTENT_ROOT'] || './content-build'
 const serveLogin = serveStatic(loginRoot)
 const serveContent = serveStatic(contentRoot)
 
