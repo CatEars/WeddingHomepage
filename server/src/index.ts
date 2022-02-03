@@ -30,11 +30,21 @@ app.use(httpLogger)
 app.use(cookieParser())
 app.use(bodyParser.json())
 
-app.get('/*', (req, res, next) => {
+app.get('/', (req, res) => {
+    if (hasUserTokenSet(req)) {
+        res.redirect('/info/')
+    } else {
+        res.redirect('/login/')
+    }
+})
+
+app.get('/login*', serveLogin)
+
+app.get('/info*', (req, res, next) => {
     if (hasUserTokenSet(req)) {
         serveContent(req, res, next)
     } else {
-        serveLogin(req, res, next)
+        res.sendStatus(401)
     }
 })
 
@@ -45,6 +55,7 @@ app.post('/login', (req, res) => {
             success: true,
             token: userToken
         })
+        res.redirect('/info')
     } else {
         res.json({
             success: false

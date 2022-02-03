@@ -21,6 +21,7 @@ const generateCookie = (token: string): string => {
   targetDate.setDate(fiveDaysAhead)
   return serialize('secret_token', token, {
     expires: targetDate,
+    path: '/',
     sameSite: true,
     secure: true
   })
@@ -37,7 +38,7 @@ function App() {
         .then(token => {
           console.log(`Got token back: `, token, 'reloading with cookie')
           document.cookie = generateCookie(token)
-          window.location.reload()
+          window.location.replace('/info')
         })
         .catch(error => {
           console.warn('Error when logging in', error)
