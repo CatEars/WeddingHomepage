@@ -8,12 +8,14 @@ import HeroPage from "./views/hero/HeroPage";
 import InfoCards from "./views/infocard/InfocardPage";
 import CtaPage from "./views/cta/CtaPage";
 import theme from "./theme";
+import MapPage from "./views/map/MapPage";
 
 function App() {
     return (
         <ThemeProvider theme={theme}>
             <HeroPage />
             <InfoCards />
+            <MapPage />
             <CtaPage />
         </ThemeProvider>
     );

@@ -22,6 +22,5 @@
   },
   "include": [
     "src",
-    "src/content/text-override.ts"
   ]
 }

@@ -16,10 +16,17 @@ export type InformationCardsContent = {
     card3: InformationCardContent
 }
 
+export type MapContent = {
+    header: string
+}
+
 export type TextContent = {
     hero: HeroTextContent
     info: InformationCardsContent
+    map: MapContent
 }
+
+
 
 const defaultText: TextContent = {
     hero: {
@@ -39,6 +46,9 @@ const defaultText: TextContent = {
             header: 'Ta dig hit med',
             message: 'Flyget'
         }
+    },
+    map: {
+        header: 'Detta är ett karta'
     }
 }
 
