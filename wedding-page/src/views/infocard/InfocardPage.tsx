@@ -1,6 +1,8 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { Theme } from "@mui/material/styles";
+import { styled } from "@mui/styles";
 import { SxProps } from "@mui/system";
+import { ReactElement, RefObject } from "react";
 import text from "../../text-content";
 
 const item: SxProps<Theme> = {
@@ -10,7 +12,11 @@ const item: SxProps<Theme> = {
     px: 5,
 };
 
-const DirectionsPage = () => (
+type InfocardPageProps = {
+    mapRef: RefObject<HTMLElement>;
+};
+
+const InfocardPage = (props: InfocardPageProps) => (
     <Box
         sx={{ display: "flex", overflow: "hidden", bgcolor: "secondary.light" }}
         component="section"
@@ -25,7 +31,18 @@ const DirectionsPage = () => (
                             component="img"
                             src="info/terra.jpg"
                             alt="suitcase"
-                            sx={{ height: 55 }}
+                            sx={{
+                                height: 55,
+                                transition: "opacity 0.2s",
+                                "&:hover": {
+                                    opacity: 0.7,
+                                },
+                            }}
+                            onClick={() => {
+                                if (props.mapRef.current) {
+                                    props.mapRef.current.scrollIntoView();
+                                }
+                            }}
                         />
                         <Typography
                             variant="h6"
@@ -84,4 +101,4 @@ const DirectionsPage = () => (
     </Box>
 );
 
-export default DirectionsPage;
+export default InfocardPage;

@@ -1,13 +1,17 @@
 import { Container, Typography, Box } from "@mui/material";
 import { styled } from "@mui/styles";
-import React from "react";
+import React, { ReactElement, RefObject } from "react";
 import text from "../../text-content";
+
+type MapPageProps = {
+    refProp: RefObject<HTMLElement>;
+};
 
 const ItsAMap = styled(Box)({
     backgroundColor: "whitesmoke",
 });
 
-const MapPage = () => (
+const MapPage = (props: MapPageProps) => (
     <Box
         component="section"
         sx={{
@@ -15,6 +19,7 @@ const MapPage = () => (
             display: "flex",
             overflow: "hidden",
         }}
+        ref={props.refProp}
     >
         <Container
             sx={{
