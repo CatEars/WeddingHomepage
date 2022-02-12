@@ -31,10 +31,10 @@ const DirectionsPage = () => (
                             sx={{ my: 5 }}
                             textAlign="center"
                         >
-                            You can get here with
+                            Ta dig hit med
                         </Typography>
                         <Typography variant="h5" textAlign="center">
-                            A car
+                            Bilen
                         </Typography>
                     </Box>
                 </Grid>
@@ -51,10 +51,10 @@ const DirectionsPage = () => (
                             sx={{ my: 5 }}
                             textAlign="center"
                         >
-                            You can get here with
+                            Ta dig hit med
                         </Typography>
                         <Typography variant="h5" textAlign="center">
-                            A bus
+                            Bussen
                         </Typography>
                     </Box>
                 </Grid>
@@ -71,10 +71,10 @@ const DirectionsPage = () => (
                             sx={{ my: 5 }}
                             textAlign="center"
                         >
-                            You can get here with
+                            Ta dig hit med
                         </Typography>
                         <Typography variant="h5" textAlign="center">
-                            A plane
+                            Flyget
                         </Typography>
                     </Box>
                 </Grid>

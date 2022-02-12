@@ -35,6 +35,9 @@ const CtaForm = (props: CtaFormProps) => {
                 Skriv in namn + antal personer + hur roligt ni vill ha det
             </Typography>
             <TextField
+                onChange={(evt) => {
+                    setName(evt.target.value);
+                }}
                 placeholder="Ditt namn"
                 variant="standard"
                 sx={{
@@ -44,11 +47,18 @@ const CtaForm = (props: CtaFormProps) => {
                 }}
             />
             <TextField
+                type="number"
+                onChange={(evt) => {
+                    setNumPeople(evt.target.value);
+                }}
                 placeholder="Ditt antal personer"
                 variant="standard"
                 sx={{ width: "100%", mt: 3, mb: 2 }}
             />
             <TextField
+                onChange={(evt) => {
+                    setMessage(evt.target.value);
+                }}
                 placeholder="Ditt meddelande"
                 variant="standard"
                 sx={{ width: "100%", mt: 3, mb: 2 }}
