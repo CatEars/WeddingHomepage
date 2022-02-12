@@ -1,6 +1,7 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import { SxProps } from "@mui/system";
+import text from "../../text-content";
 
 const item: SxProps<Theme> = {
     display: "flex",
@@ -31,10 +32,10 @@ const DirectionsPage = () => (
                             sx={{ my: 5 }}
                             textAlign="center"
                         >
-                            Ta dig hit med
+                            {text.info.card1.header}
                         </Typography>
                         <Typography variant="h5" textAlign="center">
-                            Bilen
+                            {text.info.card1.message}
                         </Typography>
                     </Box>
                 </Grid>
@@ -51,10 +52,10 @@ const DirectionsPage = () => (
                             sx={{ my: 5 }}
                             textAlign="center"
                         >
-                            Ta dig hit med
+                            {text.info.card2.header}
                         </Typography>
                         <Typography variant="h5" textAlign="center">
-                            Bussen
+                            {text.info.card2.message}
                         </Typography>
                     </Box>
                 </Grid>
@@ -71,10 +72,10 @@ const DirectionsPage = () => (
                             sx={{ my: 5 }}
                             textAlign="center"
                         >
-                            Ta dig hit med
+                            {text.info.card3.header}
                         </Typography>
                         <Typography variant="h5" textAlign="center">
-                            Flyget
+                            {text.info.card3.message}
                         </Typography>
                     </Box>
                 </Grid>

@@ -44,16 +44,14 @@ const defaultText: TextContent = {
 
 export const initializeText = async (): Promise<void> => {
     try {
-        const importPath: string = './content/text-override.ts'
-        const textModule = await import(importPath);
+        const pluginName = 'text-override'
+        const textModule = await import(`./content/${pluginName}`);
         if (textModule.default) {
             const override: TextContent = (textModule.default as any)
-            _.assign(defaultText, override)
+            _.merge(defaultText, override)
+            console.log('Updated text to', defaultText)
         }
-    } catch (error) {
-        console.error(error)
-        /* Use default text if no override was found */
-    }
+    } catch (error) { /* Use default text if no override was found */ }
 }
 
 export default defaultText
