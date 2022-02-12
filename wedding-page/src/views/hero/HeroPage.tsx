@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Typography } from "@mui/material";
 import ProductHeroLayout from "./HeroLayout";
+import text from "../../text-content";
 
 const backgroundImage =
     "https://images.unsplash.com/photo-1550005809-91ad75fb315f";
@@ -21,10 +22,10 @@ export default function ProductHero() {
                 alt="increase priority"
             />
             <Typography color="inherit" align="center" variant="h2">
-                Att gifta sig är skojsigt
+                {text.hero.landingMessage}
             </Typography>
             <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
-                Väldigt kul, faktiskt
+                {text.hero.landingSubMessage}
             </Typography>
         </ProductHeroLayout>
     );
