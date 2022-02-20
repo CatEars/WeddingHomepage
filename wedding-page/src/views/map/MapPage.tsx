@@ -1,4 +1,4 @@
-import { Container, Typography, Box } from "@mui/material";
+import { Container, Typography, Box, Link } from "@mui/material";
 import { RefObject } from "react";
 import text from "../../text-content";
 import "leaflet";
@@ -18,7 +18,9 @@ const Map = () => (
         />
         <Marker position={media.map.position}>
             <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable
+                <Link href={media.map.link} target="_blank" rel="noreferrer">
+                    {text.map.link}
+                </Link>
             </Popup>
         </Marker>
     </MapContainer>
@@ -43,6 +45,7 @@ const MapPage = (props: MapPageProps) => (
             }}
         >
             <Typography variant="h2">{text.map.header}</Typography>
+            <Link href={media.map.link}>{text.map.link}</Link>
             <Box
                 sx={{
                     mt: 5,

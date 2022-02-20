@@ -17,7 +17,8 @@ export type InformationCardsContent = {
 }
 
 export type MapContent = {
-    header: string
+    header: string,
+    link: string
 }
 
 export type TextContent = {
@@ -48,7 +49,8 @@ const defaultText: TextContent = {
         }
     },
     map: {
-        header: 'Detta är ett karta'
+        header: 'Detta är ett karta',
+        link: 'Hitta hit'
     }
 }
 
