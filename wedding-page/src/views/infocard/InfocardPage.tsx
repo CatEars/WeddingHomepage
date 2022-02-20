@@ -1,8 +1,7 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { Theme } from "@mui/material/styles";
-import { styled } from "@mui/styles";
 import { SxProps } from "@mui/system";
-import { ReactElement, RefObject } from "react";
+import { RefObject } from "react";
 import text from "../../text-content";
 
 const item: SxProps<Theme> = {

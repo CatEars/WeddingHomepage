@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Container, Grid, Typography, Button } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import CtaForm, { CtaFormValues } from "./CtaForm";
 import Snackbar from "../../components/Snackbar";
