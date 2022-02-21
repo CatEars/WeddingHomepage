@@ -2,6 +2,8 @@ import subprocess
 import os
 import shutil
 
+docker_tag = 'wedding-server:v0.0.1-a'
+
 def get_relative_directory(folder_name: str) -> str:
     top_directory = os.path.dirname(os.path.realpath(__file__))
     return os.path.join(top_directory, folder_name)
@@ -38,7 +40,7 @@ def copy_build_to_server(source_folder: str, target_folder: str):
 def build_docker(folder: str):
     def impl():
         server_folder = get_relative_directory(folder)
-        tag = os.environ.get('DOCKER_BUILD_TAG', 'wedding-server:v0.0.1-a')
+        tag = os.environ.get('DOCKER_BUILD_TAG', docker_tag)
         subprocess.call(['docker', 'build', '.', '-t', tag], cwd=server_folder, shell=True)
     return impl
 
