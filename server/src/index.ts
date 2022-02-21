@@ -7,7 +7,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import * as logging from './logging'
 
-const development = true || process.env['ENVIRONMENT'] === 'dev'
+const development = process.env['ENVIRONMENT'] === 'dev'
 const port = parseInt(process.env['PORT'] || '3000')
 const storageArea = process.env['STORAGE_AREA'] || './'
 const secret = process.env['SECRET'] || 'HelloWorld'
@@ -55,7 +55,6 @@ app.post('/login', (req, res) => {
             success: true,
             token: userToken
         })
-        res.redirect('/info')
     } else {
         res.json({
             success: false
@@ -78,8 +77,10 @@ app.post('/osa', (req, res) => {
     })
 })
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
+    process.on('SIGINT', () => {
+        server.close()
+    })
 })
-
 
