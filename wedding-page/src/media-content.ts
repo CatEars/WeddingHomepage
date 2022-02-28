@@ -37,21 +37,21 @@ const defaultMedia: MediaContent = {
     },
     contact: {
         contact1: {
-            imageUrl: 'info/terra.jpg',
+            imageUrl: '/info/terra.jpg',
         },
         contact2: {
-            imageUrl: 'info/terra.jpg'
+            imageUrl: '/info/terra.jpg'
         }
     },
     info: {
         card1: {
-            url: 'info/terra.jpg'
+            url: '/info/terra.jpg'
         },
         card2: {
-            url: 'info/terra.jpg'
+            url: '/info/terra.jpg'
         },
         card3: {
-            url: 'info/terra.jpg'
+            url: '/info/terra.jpg'
         }
     }
 }
