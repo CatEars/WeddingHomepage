@@ -5,14 +5,32 @@ export type MapMedia = {
     link: string
 }
 
+export type ContactCardMedia = {
+    imageUrl: string
+}
+
+export type ContactMedia = {
+    contact1: ContactCardMedia,
+    contact2: ContactCardMedia
+}
+
 export type MediaContent = {
-    map: MapMedia
+    map: MapMedia,
+    contact: ContactMedia
 }
 
 const defaultMedia: MediaContent = {
     map: {
         position: [51.0, -2],
         link: 'https://helloworld.com'
+    },
+    contact: {
+        contact1: {
+            imageUrl: 'info/terra.jpg',
+        },
+        contact2: {
+            imageUrl: 'info/terra.jpg'
+        }
     }
 }
 
