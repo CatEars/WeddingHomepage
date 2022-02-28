@@ -1,3 +1,4 @@
+
 import _ from 'lodash'
 
 export type HeroTextContent = {
@@ -21,9 +22,21 @@ export type MapContent = {
     link: string
 }
 
+export type ContactCard = {
+    name: string,
+    contact: string,
+    description: string
+}
+
+export type ContactsContent = {
+    contact1: ContactCard,
+    contact2: ContactCard
+}
+
 export type TextContent = {
     hero: HeroTextContent
-    info: InformationCardsContent
+    info: InformationCardsContent,
+    contacts: ContactsContent,
     map: MapContent
 }
 
@@ -33,6 +46,18 @@ const defaultText: TextContent = {
     hero: {
         landingMessage: 'Att gifta sig är skojsigt',
         landingSubMessage: 'Väldigt kul, faktiskt'
+    },
+    contacts: {
+        contact1: {
+            name: 'John Doe',
+            contact: '0123456789',
+            description: 'Toast master #1'
+        },
+        contact2: {
+            name: 'Jane Doe',
+            contact: '9876543210',
+            description: 'Alpha toast master'
+        }
     },
     info: {
         card1: {

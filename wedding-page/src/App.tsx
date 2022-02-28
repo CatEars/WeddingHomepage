@@ -7,9 +7,12 @@ import { ThemeProvider } from "@mui/material/styles";
 import HeroPage from "./views/hero/HeroPage";
 import InfoCards from "./views/infocard/InfocardPage";
 import CtaPage from "./views/cta/CtaPage";
+import ContactPage from "./views/contact/ContactPage";
 import theme from "./theme";
 import MapPage from "./views/map/MapPage";
 import "./base.css";
+
+
 
 const App = () => {
     const mapRef = useRef(null);
@@ -17,6 +20,7 @@ const App = () => {
         <ThemeProvider theme={theme}>
             <HeroPage />
             <InfoCards mapRef={mapRef} />
+            <ContactPage />
             <MapPage refProp={mapRef} />
             <CtaPage />
         </ThemeProvider>

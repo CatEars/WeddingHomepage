@@ -21,7 +21,7 @@ const InfocardPage = (props: InfocardPageProps) => (
         component="section"
     >
         <Container
-            sx={{ display: "flex", position: "relative", mt: 15, mb: 30 }}
+            sx={{ display: "flex", position: "relative", mt: 30, mb: 30 }}
         >
             <Grid container spacing={5}>
                 <Grid item xs={12} md={4}>
