@@ -65,8 +65,8 @@ const defaultText: TextContent = {
             message: 'Bilen'
         },
         card2: {
-            header: 'Ta dig hit med',
-            message: 'Bussen'
+            header: 'Toastmasters',
+            message: 'They are the best and foremost'
         },
         card3: {
             header: 'Ta dig hit med',

@@ -14,9 +14,20 @@ export type ContactMedia = {
     contact2: ContactCardMedia
 }
 
+export type InfoCardMedia = {
+    url: string
+}
+
+export type InfoMedia = {
+    card1: InfoCardMedia,
+    card2: InfoCardMedia,
+    card3: InfoCardMedia
+}
+
 export type MediaContent = {
     map: MapMedia,
-    contact: ContactMedia
+    contact: ContactMedia,
+    info: InfoMedia
 }
 
 const defaultMedia: MediaContent = {
@@ -30,6 +41,17 @@ const defaultMedia: MediaContent = {
         },
         contact2: {
             imageUrl: 'info/terra.jpg'
+        }
+    },
+    info: {
+        card1: {
+            url: 'info/terra.jpg'
+        },
+        card2: {
+            url: 'info/terra.jpg'
+        },
+        card3: {
+            url: 'info/terra.jpg'
         }
     }
 }
