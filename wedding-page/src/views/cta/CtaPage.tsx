@@ -4,7 +4,11 @@ import { Box } from "@mui/system";
 import CtaForm, { CtaFormValues } from "./CtaForm";
 import Snackbar from "../../components/Snackbar";
 
-const CtaPage = () => {
+type CtaPageProps = {
+    refProp: React.RefObject<HTMLElement>
+}
+
+const CtaPage = (props: CtaPageProps) => {
     const [messageSent, setMessageSent] = React.useState(false);
     const handleClose = () => setMessageSent(false);
     const onSubmit = (values: CtaFormValues) => {
@@ -12,7 +16,7 @@ const CtaPage = () => {
         setMessageSent(true);
     };
     return (
-        <Container component="section" sx={{ mt: 10, mb: 20, display: "flex" }}>
+        <Container component="section" sx={{ mt: 10, mb: 20, display: "flex" }} ref={props.refProp}>
             <Grid container sx={{ justifyContent: "center" }}>
                 <Grid item xs={12} md={8}>
                     <Box

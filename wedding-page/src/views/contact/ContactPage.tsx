@@ -1,5 +1,5 @@
 import { Avatar, Box, Container, Grid, Typography } from '@mui/material'
-import React from 'react'
+import React, { RefObject } from 'react'
 import text from '../../text-content'
 import media from '../../media-content'
 
@@ -37,10 +37,15 @@ const ToastMaster = (props: ToastMasterProps) => (
     </Box>
 );
 
-const ContactPage = () => (
+type ContactPageProps = {
+    refProp: RefObject<HTMLElement>
+}
+
+const ContactPage = (props: ContactPageProps) => (
     <Box
         sx={{ display: 'flex', bgcolor: 'primary.light' }}
         component='section'
+        ref={props.refProp}
     >
         <Container
             sx={{ display: 'flex', mt: 30, mb: 30 }}    

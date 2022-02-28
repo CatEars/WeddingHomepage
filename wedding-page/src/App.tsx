@@ -15,14 +15,19 @@ import "./base.css";
 
 
 const App = () => {
-    const mapRef = useRef(null);
+    const mapRef = useRef(null)
+    const contactRef = useRef(null)
+    const ctaRef = useRef(null)
     return (
         <ThemeProvider theme={theme}>
             <HeroPage />
-            <InfoCards mapRef={mapRef} />
-            <ContactPage />
+            <InfoCards 
+                mapRef={mapRef} 
+                contactRef={contactRef} 
+                ctaRef={ctaRef} />
+            <ContactPage refProp={contactRef} />
             <MapPage refProp={mapRef} />
-            <CtaPage />
+            <CtaPage refProp={ctaRef} />
         </ThemeProvider>
     );
 };

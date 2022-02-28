@@ -13,7 +13,9 @@ const item: SxProps<Theme> = {
 };
 
 type InfocardPageProps = {
-    mapRef: RefObject<HTMLElement>;
+    mapRef: RefObject<HTMLElement>,
+    contactRef: RefObject<HTMLElement>,
+    ctaRef: RefObject<HTMLElement>
 };
 
 type InfoCardProps = {
@@ -80,6 +82,11 @@ const InfocardPage = (props: InfocardPageProps) => (
                         header={text.info.card2.header}
                         message={text.info.card2.message}
                         imageUrl={media.info.card2.url}
+                        onClick={() => {
+                            if (props.contactRef.current) {
+                                props.contactRef.current.scrollIntoView()
+                            }
+                        }}
                         />
                 </Grid>
                 <Grid item xs={12} md={4}>
@@ -87,6 +94,11 @@ const InfocardPage = (props: InfocardPageProps) => (
                         header={text.info.card3.header}
                         message={text.info.card3.message}
                         imageUrl={media.info.card3.url}
+                        onClick={() => {
+                            if (props.ctaRef.current) {
+                                props.ctaRef.current.scrollIntoView()
+                            }
+                        }}
                         />
                 </Grid>
             </Grid>

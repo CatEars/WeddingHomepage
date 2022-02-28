@@ -66,11 +66,11 @@ const defaultText: TextContent = {
         },
         card2: {
             header: 'Toastmasters',
-            message: 'They are the best and foremost'
+            message: 'Oj vad snygga dem ska vara då'
         },
         card3: {
-            header: 'Ta dig hit med',
-            message: 'Flyget'
+            header: 'Svara nu',
+            message: '"Självklart, kommer jag/vi/oss"'
         }
     },
     map: {
