@@ -1,6 +1,5 @@
-import { Typography, Button } from "@mui/material";
+import { Typography, Button, Divider } from "@mui/material";
 import { Box } from "@mui/system";
-import { useState } from "react";
 import TextField from "../../components/TextField";
 import { useForm } from './FormContext'
 import Person from "./Person";
@@ -24,6 +23,20 @@ const CtaForm = (props: CtaFormProps) => {
             type: 'setName',
             index, 
             name
+        })
+    }
+    const setAllergies = (index: number, allergies: string) => {
+        dispatch({
+            type: 'setAllergies',
+            index,
+            allergies
+        })
+    }
+    const setFood = (index: number, food: string) => {
+        dispatch({
+            type: 'setFood',
+            index,
+            food
         })
     }
     return (
@@ -58,10 +71,14 @@ const CtaForm = (props: CtaFormProps) => {
             {state.people.map((person, idx) => (
                 <Person
                     name={person.name}
-                    onNameSet={(newName) => setName(idx, newName)}
+                    onNameSet={newName => setName(idx, newName)}
+                    onAllergiesSet={allergies => setAllergies(idx, allergies)}
+                    onDietChoice={diet => setFood(idx, diet)}
                     index={idx}
                  />    
             ))}
+
+            <Divider sx={{ mt: 3, mb: 3 }} />
             <Button
                 type="submit"
                 color="primary"

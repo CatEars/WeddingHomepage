@@ -14,7 +14,7 @@ export type CtaFormValues = {
     people: CtaFormPerson[]
 };
 
-export type CtaFormActionType = 'setNum' | 'setName'
+export type CtaFormActionType = 'setNum' | 'setName' | 'setAttending' | 'setHasSent' | 'setFood' | 'setAllergies'
 
 export type CtaFormAction = {
     type: 'setNum',
@@ -23,14 +23,30 @@ export type CtaFormAction = {
     type: 'setName',
     index: number,
     name: string
+} | {
+    type: 'setAttending',
+    willAttend: boolean
+} | {
+    type: 'setHasSent'
+} | {
+    type: 'setFood',
+    index: number,
+    food: string
+} | {
+    type: 'setAllergies',
+    index: number,
+    allergies: string
 }
 
 type CtaFormUpdater = (state: CtaFormValues, action: CtaFormAction) => CtaFormValues;
 
-const setNumPeople = (state: CtaFormValues, action: CtaFormAction) => {
-    if (action.type !== 'setNum') {
-        return defaultFunc(state, action)
+const checkOkIndexOrThrow = (index: number, numberOfAttendingPeople: number) => {
+    if (index < 0 || numberOfAttendingPeople <= index) {
+        throw new Error(`Cannot set attribute when index is ${index}, as only ${numberOfAttendingPeople} are expected`)
     }
+}
+
+const setNumPeople = (state: CtaFormValues, action: CtaFormAction & { type: 'setNum' }) => {
     const nextState = _.cloneDeep(state)
     nextState.numberOfAttendingPeople = action.numberOfAttendingPeople
     while (nextState.people.length > nextState.numberOfAttendingPeople) {
@@ -39,22 +55,43 @@ const setNumPeople = (state: CtaFormValues, action: CtaFormAction) => {
     while (nextState.people.length < nextState.numberOfAttendingPeople) {
         nextState.people.push({
             name: '',
-            foodChoice: '',
+            foodChoice: 'all',
             allergies: ''
         })
     }
     return nextState
 }
 
-const setName = (state: CtaFormValues, action: CtaFormAction) => {
-    if (action.type !== 'setName') {
-        return defaultFunc(state, action)
-    }
+const setAttending = (state: CtaFormValues, action: CtaFormAction & { type: 'setAttending' }) => {
     const nextState = _.cloneDeep(state)
-    if (action.index < 0 || state.people.length <= action.index) {
-        throw new Error(`Cannot set name of person when index is ${action.index}, as only ${state.people.length} are expected`)
-    }
+    nextState.willAttend = action.willAttend
+    return nextState
+}
+
+const setHasSent = (state: CtaFormValues, action: CtaFormAction & { type: 'setHasSent' }) => {
+    const nextState = _.cloneDeep(state)
+    nextState.hasSent = true
+    return nextState
+}
+
+const setFood = (state: CtaFormValues, action: CtaFormAction & { type: 'setFood' }) => {
+    const nextState = _.cloneDeep(state)
+    checkOkIndexOrThrow(action.index, state.numberOfAttendingPeople)
+    nextState.people[action.index].foodChoice = action.food
+    return nextState
+}
+
+const setName = (state: CtaFormValues, action: CtaFormAction & { type: 'setName' }) => {
+    const nextState = _.cloneDeep(state)
+    checkOkIndexOrThrow(action.index, state.numberOfAttendingPeople)
     nextState.people[action.index].name = action.name
+    return nextState
+}
+
+const setAllergies = (state: CtaFormValues, action: CtaFormAction & { type: 'setAllergies' }) => {
+    const nextState = _.cloneDeep(state)
+    checkOkIndexOrThrow(action.index, state.numberOfAttendingPeople)
+    nextState.people[action.index].allergies = action.allergies
     return nextState
 }
 
@@ -63,8 +100,12 @@ const defaultFunc = (state: CtaFormValues, action: CtaFormAction) => {
 }
 
 const reducerFunctionMapping: {[key in CtaFormActionType]: CtaFormUpdater} = {
-    'setNum': setNumPeople,
-    'setName': setName
+    'setNum': setNumPeople as CtaFormUpdater,
+    'setName': setName as CtaFormUpdater,
+    'setAttending': setAttending as CtaFormUpdater,
+    'setHasSent': setHasSent as CtaFormUpdater,
+    'setFood': setFood as CtaFormUpdater,
+    'setAllergies': setAllergies as CtaFormUpdater
 }
 
 const reducer = (state: CtaFormValues, action: CtaFormAction) => {
@@ -78,7 +119,7 @@ const initialState: CtaFormValues = {
     numberOfAttendingPeople: 1,
     people: [{
         name: '',
-        foodChoice: '',
+        foodChoice: 'all',
         allergies: ''
     }]
 }
