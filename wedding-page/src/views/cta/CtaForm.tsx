@@ -1,16 +1,15 @@
 import { Typography, Button, Divider } from "@mui/material";
 import { Box } from "@mui/system";
+import Snackbar from "../../components/Snackbar";
 import TextField from "../../components/TextField";
 import { useForm } from './FormContext'
 import Person from "./Person";
+import ThankYouDialog from "./ThankYouDialog";
+import WillAttendControl from "./WillAttendControl";
 
 
-type CtaFormProps = {
-    onSubmit?: () => void;
-    disabled?: boolean;
-};
 
-const CtaForm = (props: CtaFormProps) => {
+const CtaForm = () => {
     const { state, dispatch } = useForm();
     const setNumPeople = (num: number) => {
         dispatch({
@@ -39,12 +38,18 @@ const CtaForm = (props: CtaFormProps) => {
             food
         })
     }
+    const submit = () => {
+        dispatch({
+            type: 'setHasSent'
+        })
+        console.log('submitting!', state)
+    }
     return (
         <Box
             component="form"
             onSubmit={(evt: React.FormEvent<HTMLFormElement>) => {
                 evt.preventDefault();
-                props.onSubmit && props.onSubmit();
+                submit();
             }}
             sx={{
                 width: '80%'
@@ -53,6 +58,9 @@ const CtaForm = (props: CtaFormProps) => {
             <Typography variant="h2" gutterBottom>
                 R.S.V.P
             </Typography>
+            <Box sx={{ mt: 3, mb: 2 }}>
+                <WillAttendControl />
+            </Box>
             <Typography variant="h5">
                 Antal personer
             </Typography>
@@ -70,6 +78,7 @@ const CtaForm = (props: CtaFormProps) => {
             />
             {state.people.map((person, idx) => (
                 <Person
+                    key={`person-${idx}`}
                     name={person.name}
                     onNameSet={newName => setName(idx, newName)}
                     onAllergiesSet={allergies => setAllergies(idx, allergies)}
@@ -84,10 +93,11 @@ const CtaForm = (props: CtaFormProps) => {
                 color="primary"
                 variant="contained"
                 sx={{ width: "100%" }}
-                disabled={!!props.disabled}
+                disabled={!!state.hasSent}
             >
                 Skicka Meddelande!
             </Button>
+            <ThankYouDialog />
         </Box>
     );
 };

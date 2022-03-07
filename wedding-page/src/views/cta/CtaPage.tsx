@@ -3,7 +3,6 @@ import { Container, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import CtaForm from './CtaForm'
 import { FormProvider } from './FormContext'
-import Snackbar from "../../components/Snackbar";
 import DebugFormDisplay from "./DebugFormDisplay";
 
 type CtaPageProps = {
@@ -11,12 +10,6 @@ type CtaPageProps = {
 }
 
 const CtaPage = (props: CtaPageProps) => {
-    const [messageSent, setMessageSent] = React.useState(false);
-    const handleClose = () => setMessageSent(false);
-    const onSubmit = () => {
-        console.log('Submitting!')
-        setMessageSent(true)
-    };
     return (
         <Container component="section" sx={{ mt: 10, mb: 20, display: "flex" }} ref={props.refProp}>
             <FormProvider>
@@ -30,7 +23,7 @@ const CtaPage = (props: CtaPageProps) => {
                                 py: 8,
                             }}
                         >
-                            <CtaForm onSubmit={onSubmit} disabled={messageSent} />
+                            <CtaForm />
                         </Box>
                     </Grid>
                     {/*
@@ -40,11 +33,6 @@ const CtaPage = (props: CtaPageProps) => {
                         */}
                 </Grid>
             </FormProvider>
-            <Snackbar
-                open={messageSent}
-                closeFunc={handleClose}
-                message="Tack så mycket!"
-            />
         </Container>
     );
 };
