@@ -25,9 +25,20 @@ const authenticate = (password: string): boolean => development || password === 
 const hasUserTokenSet = (req: express.Request) => {
     return req.cookies && req.cookies.secret_token && req.cookies.secret_token === userToken
 }
+const setUserIdCookie = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    if (req.cookies && !req.cookies.user_id) {
+        const id = uuid.v4()
+        req.cookies.user_id = id
+        res.cookie('user_id', id, {
+            expires: new Date('2024-01-01T01:01:01')
+        })
+    }
+    next()
+}
 
 app.use(httpLogger)
 app.use(cookieParser())
+app.use(setUserIdCookie)
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
@@ -66,8 +77,11 @@ app.post('/osa', (req, res) => {
     if (hasUserTokenSet(req)) {
         const content = req.body.content || {fail: true}
         const fileContent = JSON.stringify(content)
-        const id = uuid.v4()
-        const fileName = `${id}.json`
+        const now = new Date(Date.now())
+        const id = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}-` +
+            `${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}`
+        const userId = (req.cookies && req.cookies.user_id) ? req.cookies.user_id : uuid.v4()
+        const fileName = `${userId}_${id}.json`
         const filePath = path.join(storageArea, fileName);
         fs.writeFileSync(filePath, fileContent, { encoding: 'utf-8' })
         req.log.info(`New OSA registered with id=${id}`)
