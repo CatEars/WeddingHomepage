@@ -1,55 +1,30 @@
 import { Typography, Button, Divider } from "@mui/material";
 import { Box } from "@mui/system";
-import Snackbar from "../../components/Snackbar";
+import React from "react";
 import TextField from "../../components/TextField";
 import { useForm } from './FormContext'
 import Person from "./Person";
 import ThankYouDialog from "./ThankYouDialog";
 import WillAttendControl from "./WillAttendControl";
 
-
-
 const CtaForm = () => {
-    const { state, dispatch } = useForm();
-    const setNumPeople = (num: number) => {
-        dispatch({
-            type: 'setNum',
-            numberOfAttendingPeople: num
-        })
-    }
-    const setName = (index: number, name: string) => {
-        dispatch({
-            type: 'setName',
-            index, 
-            name
-        })
-    }
-    const setAllergies = (index: number, allergies: string) => {
-        dispatch({
-            type: 'setAllergies',
-            index,
-            allergies
-        })
-    }
-    const setFood = (index: number, food: string) => {
-        dispatch({
-            type: 'setFood',
-            index,
-            food
-        })
-    }
-    const submit = () => {
-        dispatch({
-            type: 'setHasSent'
-        })
-        console.log('submitting!', state)
+    const { 
+        state, 
+        setNumPeople,
+        setHasSent
+    } = useForm();
+    const onNumPeopleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const num = Number.parseInt(event.target.value)
+        if (num) {
+            setNumPeople(num)    
+        }
     }
     return (
         <Box
             component="form"
             onSubmit={(evt: React.FormEvent<HTMLFormElement>) => {
                 evt.preventDefault();
-                submit();
+                setHasSent();
             }}
             sx={{
                 width: '80%'
@@ -66,12 +41,7 @@ const CtaForm = () => {
             </Typography>
             <TextField
                 type="number"
-                onChange={(evt) => {
-                    const num = Number.parseInt(evt.target.value)
-                    if (num) {
-                        setNumPeople(num);
-                    }
-                }}
+                onChange={onNumPeopleChange}
                 placeholder="Ditt antal personer"
                 variant="standard"
                 sx={{ width: "100%", mt: 3, mb: 2 }}
@@ -80,9 +50,6 @@ const CtaForm = () => {
                 <Person
                     key={`person-${idx}`}
                     name={person.name}
-                    onNameSet={newName => setName(idx, newName)}
-                    onAllergiesSet={allergies => setAllergies(idx, allergies)}
-                    onDietChoice={diet => setFood(idx, diet)}
                     index={idx}
                  />    
             ))}

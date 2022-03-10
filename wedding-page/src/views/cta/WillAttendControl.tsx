@@ -3,14 +3,7 @@ import React from 'react'
 import { useForm } from './FormContext'
 
 const WillAttendControl = () => {
-    const { state, dispatch } = useForm()
-    const setAttend = (willAttend: boolean) => {
-        dispatch({
-            type: 'setAttending',
-            willAttend
-        })
-    }
-
+    const { setAttend } = useForm()
     return (
         <FormControl>
             <FormLabel>Will Attend</FormLabel>

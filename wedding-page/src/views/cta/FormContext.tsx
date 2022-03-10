@@ -144,5 +144,52 @@ export const useForm = () => {
     if (context === undefined) {
         throw new Error('useForm must be used within a FormProvider')
     }
-    return context
+    const { dispatch } = context
+    const setNumPeople = (num: number) => {
+        dispatch({
+            type: 'setNum',
+            numberOfAttendingPeople: num
+        })
+    }
+    const setName = (index: number, name: string) => {
+        dispatch({
+            type: 'setName',
+            index, 
+            name
+        })
+    }
+    const setAllergies = (index: number, allergies: string) => {
+        dispatch({
+            type: 'setAllergies',
+            index,
+            allergies
+        })
+    }
+    const setFood = (index: number, food: string) => {
+        dispatch({
+            type: 'setFood',
+            index,
+            food
+        })
+    }
+    const setHasSent = () => {
+        dispatch({
+            type: 'setHasSent'
+        })
+    }
+    const setAttend = (willAttend: boolean) => {
+        dispatch({
+            type: 'setAttending',
+            willAttend
+        })
+    }
+    return { 
+        ...context, 
+        setNumPeople,
+        setName,
+        setAllergies,
+        setFood,
+        setHasSent,
+        setAttend
+    }
 }
