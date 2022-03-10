@@ -5,7 +5,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { ThemeProvider } from "@mui/material/styles";
 import HeroPage from "./views/hero/HeroPage";
-import InfoCards from "./views/infocard/InfocardPage";
+import InfoCards from "./views/infocard/InfoCardPage";
 import CtaPage from "./views/cta/CtaPage";
 import ContactPage from "./views/contact/ContactPage";
 import theme from "./theme";
