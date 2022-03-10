@@ -6,6 +6,7 @@ import { useForm } from './FormContext'
 import Person from "./Person";
 import ThankYouDialog from "./ThankYouDialog";
 import WillAttendControl from "./WillAttendControl";
+import text from '../../text-content'
 
 const CtaForm = () => {
     const { 
@@ -19,6 +20,7 @@ const CtaForm = () => {
             setNumPeople(num)    
         }
     }
+    const t = text.cta.form
     return (
         <Box
             component="form"
@@ -31,18 +33,18 @@ const CtaForm = () => {
             }}
         >
             <Typography variant="h2" gutterBottom>
-                R.S.V.P
+                {t.rsvp}
             </Typography>
             <Box sx={{ mt: 3, mb: 2 }}>
                 <WillAttendControl />
             </Box>
             <Typography variant="h5">
-                Antal personer
+                {t.numberOfPeople}
             </Typography>
             <TextField
                 type="number"
                 onChange={onNumPeopleChange}
-                placeholder="Ditt antal personer"
+                placeholder={t.numberOfPeople}
                 variant="standard"
                 sx={{ width: "100%", mt: 3, mb: 2 }}
             />
@@ -62,7 +64,7 @@ const CtaForm = () => {
                 sx={{ width: "100%" }}
                 disabled={!!state.hasSent}
             >
-                Skicka Meddelande!
+                {t.sendRsvp}
             </Button>
             <ThankYouDialog />
         </Box>

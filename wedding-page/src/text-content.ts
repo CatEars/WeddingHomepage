@@ -33,14 +33,41 @@ export type ContactsContent = {
     contact2: ContactCard
 }
 
+export type AttendanceContent = {
+    willAttend: string,
+    yesAnswer: string,
+    noAnswer: string
+}
+
+export type CtaPersonContent = {
+    person: (index: number) => string,
+    name: string,
+    allEater: string,
+    vegetarian: string,
+    vegan: string,
+    allergies: string
+}
+
+export type CtaFormContent = {
+    rsvp: string,
+    numberOfPeople: string,
+    sendRsvp: string
+}
+
+export type CtaContent = {
+    attend: AttendanceContent,
+    thankYou: string,
+    person: CtaPersonContent,
+    form: CtaFormContent
+}
+
 export type TextContent = {
     hero: HeroTextContent
     info: InformationCardsContent,
     contacts: ContactsContent,
+    cta: CtaContent,
     map: MapContent
 }
-
-
 
 const defaultText: TextContent = {
     hero: {
@@ -71,6 +98,27 @@ const defaultText: TextContent = {
         card3: {
             header: 'Svara nu',
             message: '"Självklart, kommer jag/vi/oss"'
+        }
+    },
+    cta: {
+        attend: {
+            willAttend: 'Kommer ni?',
+            yesAnswer: 'Jajamensan, självklart',
+            noAnswer: 'Nej, tyvärr'
+        },
+        thankYou: 'Tack så mycket!',
+        person: {
+            person: (index: number) => `Person ${index}`,
+            allEater: 'Äter allt',
+            allergies: 'Allergier',
+            name: 'Namn',
+            vegan: 'Vegan',
+            vegetarian: 'Vegetarian'
+        },
+        form: {
+            numberOfPeople: 'Ditt antal personer',
+            rsvp: 'R.S.V.P',
+            sendRsvp: 'Skicka meddelande'
         }
     },
     map: {

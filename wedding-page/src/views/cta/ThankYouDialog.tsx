@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Snackbar from '../../components/Snackbar'
 import { useForm } from './FormContext'
-
+import text from '../../text-content'
 
 const ThankYouDialog = () => {
     const [hasBeenClosed, setClosed] = useState(false)
@@ -10,7 +10,7 @@ const ThankYouDialog = () => {
         <Snackbar
             open={state.hasSent && !hasBeenClosed}
             closeFunc={() => setClosed(true)}
-            message="Tack så mycket!"
+            message={text.cta.thankYou}
             />
     )
 }

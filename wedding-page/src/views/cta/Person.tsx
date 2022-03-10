@@ -2,6 +2,7 @@ import { Box, Divider, FormControl, FormControlLabel, FormLabel, Radio, RadioGro
 import React from 'react'
 import TextField from "../../components/TextField";
 import { useForm } from './FormContext';
+import text from '../../text-content'
 
 type PersonProps = {
     index: number,
@@ -17,17 +18,18 @@ const Person = (props: PersonProps) => {
         setFood,
         setName
     } = useForm()
+    const t = text.cta.person
     
     return (
         <Box>
             <Divider sx={{ mt: 3, mb: 3 }} />
-            <Typography variant="h5">{`Person ${props.index + 1}`}</Typography>
+            <Typography variant="h5">{t.person(index + 1)}</Typography>
             <TextField
                 onChange={(evt) => {
                     setName(index, evt.target.value || '')
                 }}
-                label="Name"
-                placeholder="Name"
+                label={t.name}
+                placeholder={t.name}
                 variant="standard"
                 sx={{ width: "100%", mt: 3, mb: 2 }}
                 value={props.name}
@@ -39,23 +41,23 @@ const Person = (props: PersonProps) => {
                         onClick={() => setFood(index, 'all')} 
                         value="all" 
                         control={<Radio />} 
-                        label="Eat everything" />
+                        label={t.name} />
                     <FormControlLabel 
                         onClick={() => setFood(index, 'vegetarian')} 
                         value="vegetarian" 
                         control={<Radio />} 
-                        label="Vegetarian" />
+                        label={t.vegetarian} />
                     <FormControlLabel 
                         onClick={() => setFood(index, 'vegan')} 
                         value="vegan" 
                         control={<Radio />} 
-                        label="Vegan" />
+                        label={t.vegan} />
                 </RadioGroup>
             </FormControl>
             <TextField
                 onChange={evt => setAllergies(index, evt.target.value || '')}
-                label="Allergies"
-                placeholder="Allergies"
+                label={t.allergies}
+                placeholder={t.allergies}
                 variant="standard"
                 sx={{ width: "100%", mt: 2 }}
                 value={state.people[index].allergies}
