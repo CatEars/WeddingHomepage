@@ -45,7 +45,8 @@ export type CtaPersonContent = {
     allEater: string,
     vegetarian: string,
     vegan: string,
-    allergies: string
+    allergies: string,
+    diet: string
 }
 
 export type CtaFormContent = {
@@ -109,6 +110,7 @@ const defaultText: TextContent = {
         thankYou: 'Tack så mycket!',
         person: {
             person: (index: number) => `Person ${index}`,
+            diet: 'diet',
             allEater: 'Äter allt',
             allergies: 'Allergier',
             name: 'Namn',

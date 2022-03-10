@@ -35,7 +35,7 @@ const Person = (props: PersonProps) => {
                 value={props.name}
             />
             <FormControl>
-                <FormLabel>Diet</FormLabel>
+                <FormLabel>{t.diet}</FormLabel>
                 <RadioGroup defaultValue="all">
                     <FormControlLabel 
                         onClick={() => setFood(index, 'all')} 
