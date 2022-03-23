@@ -1,51 +1,26 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import { SxProps } from "@mui/system";
-import React from 'react'
+import React from "react";
 
-const item: SxProps<Theme> = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    px: 5,
-};
+import ImageCard from "./ImageCard";
 
 type InfoCardProps = {
-    header: string,
-    message: string,
-    onClick?: () => void,
-    imageUrl: string
-}
+    header: string;
+    message: string;
+    onClick?: () => void;
+    imageUrl: string;
+};
 
 const InfoCard = (props: InfoCardProps) => (
-    <Box sx={item}>
-        <Box
-            component="img"
-            src={props.imageUrl}
-            sx={{
-                height: 55,
-                transition: "opacity 0.2s",
-                "&:hover": {
-                    opacity: 0.7,
-                },
-            }}
-            onClick={() => {
-                if (props.onClick) {
-                    props.onClick()
-                }
-            }}
-        />
-        <Typography
-            variant="h6"
-            sx={{ my: 5 }}
-            textAlign="center"
-        >
+    <ImageCard imageUrl={props.imageUrl} onClick={props.onClick}>
+        <Typography variant="h6" sx={{ my: 3 }} textAlign="center">
             {props.header}
         </Typography>
-        <Typography variant="h5" textAlign="center">
+        <Typography sx={{ my: 0 }} variant="h5" textAlign="center">
             {props.message}
         </Typography>
-    </Box>
-)
+    </ImageCard>
+);
 
-export default InfoCard
+export default InfoCard;

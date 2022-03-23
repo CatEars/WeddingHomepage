@@ -1,13 +1,14 @@
 import { Box, Container, Grid } from "@mui/material";
 import { RefObject } from "react";
-import InfoCard from './InfoCard'
+import InfoCard from "./InfoCard";
 import text from "../../text-content";
-import media from "../../media-content"
+import media from "../../media-content";
+import LinkInfoCard from "./LinkInfoCard";
 
 type InfocardPageProps = {
-    mapRef: RefObject<HTMLElement>,
-    contactRef: RefObject<HTMLElement>,
-    ctaRef: RefObject<HTMLElement>
+    mapRef: RefObject<HTMLElement>;
+    contactRef: RefObject<HTMLElement>;
+    ctaRef: RefObject<HTMLElement>;
 };
 
 const InfocardPage = (props: InfocardPageProps) => (
@@ -21,15 +22,15 @@ const InfocardPage = (props: InfocardPageProps) => (
             <Grid container spacing={5}>
                 <Grid item xs={12} md={4}>
                     <InfoCard
-                        header={text.info.card1.header} 
+                        header={text.info.card1.header}
                         message={text.info.card1.message}
                         imageUrl={media.info.card1.url}
                         onClick={() => {
                             if (props.mapRef.current) {
-                                props.mapRef.current.scrollIntoView()
+                                props.mapRef.current.scrollIntoView();
                             }
                         }}
-                        />
+                    />
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <InfoCard
@@ -38,10 +39,10 @@ const InfocardPage = (props: InfocardPageProps) => (
                         imageUrl={media.info.card2.url}
                         onClick={() => {
                             if (props.contactRef.current) {
-                                props.contactRef.current.scrollIntoView()
+                                props.contactRef.current.scrollIntoView();
                             }
                         }}
-                        />
+                    />
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <InfoCard
@@ -50,10 +51,18 @@ const InfocardPage = (props: InfocardPageProps) => (
                         imageUrl={media.info.card3.url}
                         onClick={() => {
                             if (props.ctaRef.current) {
-                                props.ctaRef.current.scrollIntoView()
+                                props.ctaRef.current.scrollIntoView();
                             }
                         }}
-                        />
+                    />
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <LinkInfoCard
+                        header="Ge bort"
+                        message="Ge bort grejer hit istället"
+                        imageUrl={media.info.card2.url}
+                        links={["https://www.wateraid.org"]}
+                    />
                 </Grid>
             </Grid>
         </Container>
