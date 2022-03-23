@@ -8,7 +8,12 @@ type LinkInfoCardProps = {
     message: string;
     onClick?: () => void;
     imageUrl: string;
-    links: string[];
+    links: LinkProps[];
+};
+
+type LinkProps = {
+    href: string;
+    displayText: string;
 };
 
 const LinkInfoCard = (props: LinkInfoCardProps) => (
@@ -16,12 +21,16 @@ const LinkInfoCard = (props: LinkInfoCardProps) => (
         <Typography variant="h6" sx={{ my: 3 }} textAlign="center">
             {props.header}
         </Typography>
-        <Typography sx={{ mt: 0, mb: 3 }} variant="h5" textAlign="center">
+        <Typography
+            sx={{ mt: 0, mb: 3, textAlign: "left" }}
+            variant="h5"
+            textAlign="center"
+        >
             {props.message}
         </Typography>
         {props.links.map((link) => (
-            <Typography variant="h5">
-                <Link href={link}>{link}</Link>
+            <Typography variant="h5" sx={{ mt: 2 }}>
+                <Link href={link.href}>{link.displayText}</Link>
             </Typography>
         ))}
     </ImageCard>

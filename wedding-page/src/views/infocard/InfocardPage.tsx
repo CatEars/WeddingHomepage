@@ -11,62 +11,63 @@ type InfocardPageProps = {
     ctaRef: RefObject<HTMLElement>;
 };
 
-const InfocardPage = (props: InfocardPageProps) => (
-    <Box
-        sx={{ display: "flex", overflow: "hidden", bgcolor: "secondary.light" }}
-        component="section"
-    >
-        <Container
-            sx={{ display: "flex", position: "relative", mt: 30, mb: 30 }}
+const InfocardPage = (props: InfocardPageProps) => {
+    const initialInfoCards = [
+        {
+            text: text.info.card1,
+            media: media.info.card1,
+            ref: props.mapRef,
+        },
+        {
+            text: text.info.card2,
+            media: media.info.card2,
+            ref: props.contactRef,
+        },
+        {
+            text: text.info.card3,
+            media: media.info.card3,
+            ref: props.ctaRef,
+        },
+    ];
+    return (
+        <Box
+            sx={{
+                display: "flex",
+                overflow: "hidden",
+                bgcolor: "secondary.light",
+            }}
+            component="section"
         >
-            <Grid container spacing={5}>
-                <Grid item xs={12} md={4}>
-                    <InfoCard
-                        header={text.info.card1.header}
-                        message={text.info.card1.message}
-                        imageUrl={media.info.card1.url}
-                        onClick={() => {
-                            if (props.mapRef.current) {
-                                props.mapRef.current.scrollIntoView();
-                            }
-                        }}
-                    />
+            <Container
+                sx={{ display: "flex", position: "relative", mt: 30, mb: 30 }}
+            >
+                <Grid container spacing={5}>
+                    {initialInfoCards.map((card) => (
+                        <Grid item xs={12} md={4}>
+                            <InfoCard
+                                header={card.text.header}
+                                message={card.text.message}
+                                imageUrl={card.media.url}
+                                onClick={() => {
+                                    if (card.ref.current) {
+                                        card.ref.current.scrollIntoView();
+                                    }
+                                }}
+                            />
+                        </Grid>
+                    ))}
+                    <Grid item xs={12} md={4}>
+                        <LinkInfoCard
+                            header={text.info.card4.header}
+                            message={text.info.card4.message}
+                            imageUrl={media.info.card4.url}
+                            links={text.info.card4.links}
+                        />
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} md={4}>
-                    <InfoCard
-                        header={text.info.card2.header}
-                        message={text.info.card2.message}
-                        imageUrl={media.info.card2.url}
-                        onClick={() => {
-                            if (props.contactRef.current) {
-                                props.contactRef.current.scrollIntoView();
-                            }
-                        }}
-                    />
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <InfoCard
-                        header={text.info.card3.header}
-                        message={text.info.card3.message}
-                        imageUrl={media.info.card3.url}
-                        onClick={() => {
-                            if (props.ctaRef.current) {
-                                props.ctaRef.current.scrollIntoView();
-                            }
-                        }}
-                    />
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <LinkInfoCard
-                        header="Ge bort"
-                        message="Ge bort grejer hit istället"
-                        imageUrl={media.info.card2.url}
-                        links={["https://www.wateraid.org"]}
-                    />
-                </Grid>
-            </Grid>
-        </Container>
-    </Box>
-);
+            </Container>
+        </Box>
+    );
+};
 
 export default InfocardPage;

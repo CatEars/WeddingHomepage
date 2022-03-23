@@ -15,7 +15,11 @@ const InfoCard = (props: InfoCardProps) => (
         <Typography variant="h6" sx={{ my: 3 }} textAlign="center">
             {props.header}
         </Typography>
-        <Typography sx={{ my: 0 }} variant="h5" textAlign="center">
+        <Typography
+            sx={{ my: 0, textAlign: "left" }}
+            variant="h5"
+            textAlign="center"
+        >
             {props.message}
         </Typography>
     </ImageCard>
