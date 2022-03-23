@@ -1,6 +1,4 @@
 import { Typography } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import { SxProps } from "@mui/system";
 import React from "react";
 
 import ImageCard from "./ImageCard";
