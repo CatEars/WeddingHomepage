@@ -48,8 +48,8 @@ const InfocardPage = () => {
                 sx={{ display: "flex", position: "relative", mt: 30, mb: 30 }}
             >
                 <Grid container spacing={5}>
-                    {initialInfoCards.map((card) => (
-                        <Grid item xs={12} md={4}>
+                    {initialInfoCards.map((card, idx) => (
+                        <Grid key={`grid-card-${idx}`} item xs={12} md={4}>
                             <InfoCard
                                 header={card.text.header}
                                 message={card.text.message}

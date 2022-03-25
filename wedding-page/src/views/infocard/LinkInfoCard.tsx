@@ -28,8 +28,8 @@ const LinkInfoCard = (props: LinkInfoCardProps) => (
         >
             {props.message}
         </Typography>
-        {props.links.map((link) => (
-            <Typography variant="h5" sx={{ mt: 2 }}>
+        {props.links.map((link, idx) => (
+            <Typography key={`card-link-${idx}`} variant="h5" sx={{ mt: 2 }}>
                 <Link href={link.href}>{link.displayText}</Link>
             </Typography>
         ))}

@@ -80,7 +80,7 @@ export const initializeMedia = async (): Promise<void> => {
         if (textModule.default) {
             const override: MediaContent = textModule.default as any;
             _.merge(defaultMedia, override);
-            console.log("Updated text to", defaultMedia);
+            console.log("Updated media to", defaultMedia);
         }
     } catch (error) {
         /* Use default text if no override was found */
