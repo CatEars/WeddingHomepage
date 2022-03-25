@@ -1,22 +1,18 @@
 import { Container, Typography, Box, Link } from "@mui/material";
-import { RefObject } from "react";
 import text from "../../text-content";
 import "leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "./map.css";
 import media from "../../media-content";
-
-type MapPageProps = {
-    refProp: RefObject<HTMLElement>;
-};
+import { useScroll } from "../scroll";
 
 const Map = () => (
-    <MapContainer 
-        center={media.map.position} 
+    <MapContainer
+        center={media.map.position}
         zoom={13}
         scrollWheelZoom={false}
         dragging={false}
-        >
+    >
         <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -31,35 +27,38 @@ const Map = () => (
     </MapContainer>
 );
 
-const MapPage = (props: MapPageProps) => (
-    <Box
-        component="section"
-        sx={{
-            bgcolor: "secondary.main",
-            display: "flex",
-            overflow: "hidden",
-        }}
-        ref={props.refProp}
-    >
-        <Container
+const MapPage = () => {
+    const { map } = useScroll();
+    return (
+        <Box
+            component="section"
             sx={{
-                mt: 10,
-                mb: 10,
-                textAlign: "center",
                 bgcolor: "secondary.main",
+                display: "flex",
+                overflow: "hidden",
             }}
+            ref={map}
         >
-            <Typography variant="h2">{text.map.header}</Typography>
-            <Link href={media.map.link}>{text.map.link}</Link>
-            <Box
+            <Container
                 sx={{
-                    mt: 5,
+                    mt: 10,
+                    mb: 10,
+                    textAlign: "center",
+                    bgcolor: "secondary.main",
                 }}
             >
-                <Map />
-            </Box>
-        </Container>
-    </Box>
-);
+                <Typography variant="h2">{text.map.header}</Typography>
+                <Link href={media.map.link}>{text.map.link}</Link>
+                <Box
+                    sx={{
+                        mt: 5,
+                    }}
+                >
+                    <Map />
+                </Box>
+            </Container>
+        </Box>
+    );
+};
 
 export default MapPage;

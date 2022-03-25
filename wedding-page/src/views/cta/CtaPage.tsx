@@ -1,17 +1,20 @@
 import * as React from "react";
 import { Container, Grid } from "@mui/material";
 import { Box } from "@mui/system";
-import CtaForm from './CtaForm'
-import { FormProvider } from './FormContext'
+import CtaForm from "./CtaForm";
+import { FormProvider } from "./FormContext";
 import DebugFormDisplay from "./DebugFormDisplay";
+import { useScroll } from "../scroll";
 
 type CtaPageProps = {
-    refProp: React.RefObject<HTMLElement>
-}
+    refProp: React.RefObject<HTMLElement>;
+};
 
-const CtaPage = (props: CtaPageProps) => {
+const CtaPage = () => {
+    const { cta } = useScroll();
     return (
-        <Container component="section" sx={{ mt: 10, mb: 20, display: "flex" }} ref={props.refProp}>
+        <Container component="section" sx={{ mt: 10, mb: 20, display: "flex" }}>
+            <Box ref={cta} />
             <FormProvider>
                 <Grid container sx={{ justifyContent: "center" }}>
                     <Grid item xs={12} md={8}>

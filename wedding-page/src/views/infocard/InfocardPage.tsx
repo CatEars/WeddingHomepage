@@ -5,29 +5,25 @@ import text from "../../text-content";
 import media from "../../media-content";
 import LinkInfoCard from "./LinkInfoCard";
 import ButtonInfoCard from "./ButtonInfoCard";
+import { useScroll } from "../scroll";
 
-type InfocardPageProps = {
-    mapRef: RefObject<HTMLElement>;
-    contactRef: RefObject<HTMLElement>;
-    ctaRef: RefObject<HTMLElement>;
-};
-
-const InfocardPage = (props: InfocardPageProps) => {
+const InfocardPage = () => {
+    const { map, contact, cta } = useScroll();
     const initialInfoCards = [
         {
             text: text.info.card1,
             media: media.info.card1,
-            ref: props.mapRef,
+            ref: map,
         },
         {
             text: text.info.card2,
             media: media.info.card2,
-            ref: props.contactRef,
+            ref: contact,
         },
         {
             text: text.info.card3,
             media: media.info.card3,
-            ref: props.ctaRef,
+            ref: cta,
         },
     ];
     return (
@@ -51,7 +47,10 @@ const InfocardPage = (props: InfocardPageProps) => {
                                 imageUrl={card.media.url}
                                 onClick={() => {
                                     if (card.ref.current) {
-                                        card.ref.current.scrollIntoView();
+                                        const theRef: any = card.ref.current;
+                                        if (theRef.scrollIntoView) {
+                                            theRef.scrollIntoView();
+                                        }
                                     }
                                 }}
                             />
