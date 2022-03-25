@@ -21,11 +21,18 @@ export type LinkInformationCardContent = {
     links: LinkInformation[];
 };
 
+export type ButtonInformationCardContent = {
+    header: string;
+    message: string;
+    buttonText: string;
+};
+
 export type InformationCardsContent = {
     card1: InformationCardContent;
     card2: InformationCardContent;
     card3: InformationCardContent;
     card4: LinkInformationCardContent;
+    card5: ButtonInformationCardContent;
 };
 
 export type MapContent = {
@@ -124,6 +131,11 @@ const defaultText: TextContent = {
                     displayText: "www.redcross.org",
                 },
             ],
+        },
+        card5: {
+            header: "Skriv i nu!",
+            message: "Just do it!",
+            buttonText: "OSA",
         },
     },
     cta: {

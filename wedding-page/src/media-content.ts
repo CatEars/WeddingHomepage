@@ -23,15 +23,25 @@ export type InfoMedia = {
     card2: InfoCardMedia;
     card3: InfoCardMedia;
     card4: InfoCardMedia;
+    card5: InfoCardMedia;
+};
+
+export type HeroContent = {
+    backgroundUrl: string;
 };
 
 export type MediaContent = {
+    hero: HeroContent;
     map: MapMedia;
     contact: ContactMedia;
     info: InfoMedia;
 };
 
 const defaultMedia: MediaContent = {
+    hero: {
+        backgroundUrl:
+            "https://images.unsplash.com/photo-1550005809-91ad75fb315f",
+    },
     map: {
         position: [51.0, -2],
         link: "https://helloworld.com",
@@ -55,6 +65,9 @@ const defaultMedia: MediaContent = {
             url: "/info/terra.jpg",
         },
         card4: {
+            url: "/info/terra.jpg",
+        },
+        card5: {
             url: "/info/terra.jpg",
         },
     },

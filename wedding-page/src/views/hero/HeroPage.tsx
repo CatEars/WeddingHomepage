@@ -2,15 +2,13 @@ import * as React from "react";
 import { Typography } from "@mui/material";
 import ProductHeroLayout from "./HeroLayout";
 import text from "../../text-content";
-
-const backgroundImage =
-    "https://images.unsplash.com/photo-1550005809-91ad75fb315f";
+import media from "../../media-content";
 
 export default function ProductHero() {
     return (
         <ProductHeroLayout
             sxBackground={{
-                backgroundImage: `url(${backgroundImage})`,
+                backgroundImage: `url(${media.hero.backgroundUrl})`,
                 backgroundColor: "#7fc7d9", // Average color of the background image.
                 backgroundPosition: "center",
             }}
@@ -18,7 +16,7 @@ export default function ProductHero() {
             {/* Increase the network loading priority of the background image. */}
             <img
                 style={{ display: "none" }}
-                src={backgroundImage}
+                src={media.hero.backgroundUrl}
                 alt="increase priority"
             />
             <Typography color="inherit" align="center" variant="h2">

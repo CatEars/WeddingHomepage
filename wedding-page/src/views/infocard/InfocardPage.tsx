@@ -4,6 +4,7 @@ import InfoCard from "./InfoCard";
 import text from "../../text-content";
 import media from "../../media-content";
 import LinkInfoCard from "./LinkInfoCard";
+import ButtonInfoCard from "./ButtonInfoCard";
 
 type InfocardPageProps = {
     mapRef: RefObject<HTMLElement>;
@@ -62,6 +63,17 @@ const InfocardPage = (props: InfocardPageProps) => {
                             message={text.info.card4.message}
                             imageUrl={media.info.card4.url}
                             links={text.info.card4.links}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        <ButtonInfoCard
+                            header={text.info.card5.header}
+                            message={text.info.card5.message}
+                            imageUrl={media.info.card5.url}
+                            buttonText={text.info.card5.buttonText}
+                            onClick={() => {
+                                console.log("Clickety click on da button");
+                            }}
                         />
                     </Grid>
                 </Grid>
