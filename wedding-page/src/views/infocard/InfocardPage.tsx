@@ -1,11 +1,20 @@
 import { Box, Container, Grid } from "@mui/material";
-import { RefObject } from "react";
+import { ReactNode, RefObject } from "react";
 import InfoCard from "./InfoCard";
 import text from "../../text-content";
 import media from "../../media-content";
 import LinkInfoCard from "./LinkInfoCard";
 import ButtonInfoCard from "./ButtonInfoCard";
 import { useScroll } from "../scroll";
+
+const scrollIntoRef = (ref: RefObject<ReactNode>) => {
+    if (ref.current) {
+        const theRef: any = ref.current;
+        if (theRef.scrollIntoView) {
+            theRef.scrollIntoView();
+        }
+    }
+};
 
 const InfocardPage = () => {
     const { map, contact, cta } = useScroll();
@@ -45,14 +54,7 @@ const InfocardPage = () => {
                                 header={card.text.header}
                                 message={card.text.message}
                                 imageUrl={card.media.url}
-                                onClick={() => {
-                                    if (card.ref.current) {
-                                        const theRef: any = card.ref.current;
-                                        if (theRef.scrollIntoView) {
-                                            theRef.scrollIntoView();
-                                        }
-                                    }
-                                }}
+                                onClick={() => scrollIntoRef(card.ref)}
                             />
                         </Grid>
                     ))}
@@ -70,9 +72,7 @@ const InfocardPage = () => {
                             message={text.info.card5.message}
                             imageUrl={media.info.card5.url}
                             buttonText={text.info.card5.buttonText}
-                            onClick={() => {
-                                console.log("Clickety click on da button");
-                            }}
+                            onClick={() => scrollIntoRef(cta)}
                         />
                     </Grid>
                 </Grid>
