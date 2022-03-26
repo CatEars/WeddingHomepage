@@ -29,6 +29,7 @@ const Button = (props: ButtonProps) => {
                 "&:hover": {
                     background: "#4D5A4F",
                 },
+                minWidth: "100px",
             }}
             disabled={props.disabled}
             onClick={() => {

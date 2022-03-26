@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Typography, Box } from "@mui/material";
-import ProductHeroLayout from "./HeroLayout";
+import HeroLayout from "./HeroLayout";
 import text from "../../text-content";
 import media from "../../media-content";
 import { useScroll } from "../scroll";
@@ -9,7 +9,7 @@ import BigButton from "../../components/BigButton";
 export default function ProductHero() {
     const { cta, scrollToRef } = useScroll();
     return (
-        <ProductHeroLayout
+        <HeroLayout
             sxBackground={{
                 backgroundImage: `url(${media.hero.backgroundUrl})`,
                 backgroundColor: "#7fc7d9", // Average color of the background image.
@@ -44,6 +44,6 @@ export default function ProductHero() {
                     onClick={() => scrollToRef(cta)}
                 />
             </Box>
-        </ProductHeroLayout>
+        </HeroLayout>
     );
 }

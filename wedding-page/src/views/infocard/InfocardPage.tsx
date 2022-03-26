@@ -1,4 +1,5 @@
 import { Box, Container, Grid } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import _ from "lodash";
 import { ReactElement, RefObject } from "react";
 import text from "../../text-content";
@@ -23,6 +24,7 @@ const InfocardPage = () => {
     const cards = _.zip(text.info.cards, media.info.cards, onClicks).map(
         ([text, media, onClick]) => ({ text, media, onClick })
     );
+    const theme = useTheme();
 
     return (
         <Box
@@ -34,7 +36,15 @@ const InfocardPage = () => {
             component="section"
         >
             <Container
-                sx={{ display: "flex", position: "relative", mt: 30, mb: 30 }}
+                sx={{
+                    display: "flex",
+                    position: "relative",
+                    mt: 30,
+                    mb: 30,
+                    [theme.breakpoints.up("lg")]: {
+                        maxWidth: 1500,
+                    },
+                }}
             >
                 <Grid container spacing={5}>
                     {cards.map((card, idx) => (
