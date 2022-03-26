@@ -1,27 +1,16 @@
 import { Box, Container, Grid } from "@mui/material";
 import _ from "lodash";
-import { ReactNode, RefObject } from "react";
-import InfoCard from "./InfoCard";
+import { ReactElement, RefObject } from "react";
 import text from "../../text-content";
 import media from "../../media-content";
-import LinkInfoCard from "./LinkInfoCard";
-import ButtonInfoCard from "./ButtonInfoCard";
 import { useScroll } from "../scroll";
 import CardSelector from "./CardSelector";
 
-const scrollIntoRef = (ref: RefObject<ReactNode>) => {
-    if (ref.current) {
-        const theRef: any = ref.current;
-        if (theRef.scrollIntoView) {
-            theRef.scrollIntoView();
-        }
-    }
-};
-
-const makeRefClicker = (ref: RefObject<ReactNode>) => () => scrollIntoRef(ref);
-
 const InfocardPage = () => {
-    const { map, contact, cta } = useScroll();
+    const { map, contact, cta, scrollToRef } = useScroll();
+    const makeRefClicker = (ref: RefObject<ReactElement>) => () =>
+        scrollToRef(ref);
+
     const onClicks = [
         makeRefClicker(map),
         makeRefClicker(contact),

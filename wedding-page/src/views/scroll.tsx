@@ -9,12 +9,23 @@ export type ScrollableElements = {
     map: RefObject<ReactElement>;
     cta: RefObject<ReactElement>;
     contact: RefObject<ReactElement>;
+    scrollToRef: (ref?: RefObject<ReactElement>) => void;
+};
+
+const scrollToRef = (ref?: RefObject<ReactElement>) => {
+    if (ref && ref.current) {
+        const theRef: any = ref.current;
+        if (theRef.scrollIntoView) {
+            theRef.scrollIntoView();
+        }
+    }
 };
 
 const defaultValue: ScrollableElements = {
     map: React.createRef(),
     cta: React.createRef(),
     contact: React.createRef(),
+    scrollToRef,
 };
 
 const ScrollToContext = createContext<ScrollableElements>(defaultValue);
