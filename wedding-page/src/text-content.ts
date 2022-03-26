@@ -40,7 +40,8 @@ export type InformationCardsContent = {
 
 export type MapContent = {
     header: string;
-    link: string;
+    subtext: string;
+    coordinates: string;
 };
 
 export type ContactCard = {
@@ -178,7 +179,8 @@ const defaultText: TextContent = {
     },
     map: {
         header: "Detta är ett karta",
-        link: "Hitta hit",
+        subtext: "Placey placey",
+        coordinates: "51.0 N, -2 E",
     },
     title: "Gifta sig - Woop Woop!",
 };

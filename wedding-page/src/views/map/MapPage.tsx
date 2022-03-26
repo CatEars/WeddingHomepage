@@ -20,7 +20,7 @@ const Map = () => (
         <Marker position={media.map.position}>
             <Popup>
                 <Link href={media.map.link} target="_blank" rel="noreferrer">
-                    {text.map.link}
+                    {text.map.coordinates}
                 </Link>
             </Popup>
         </Marker>
@@ -48,7 +48,15 @@ const MapPage = () => {
                 }}
             >
                 <Typography variant="h2">{text.map.header}</Typography>
-                <Link href={media.map.link}>{text.map.link}</Link>
+
+                <Link href={media.map.link}>
+                    <Typography variant="subtitle1">
+                        {text.map.subtext}
+                    </Typography>
+                    <Typography variant="subtitle1">
+                        {text.map.coordinates}
+                    </Typography>
+                </Link>
                 <Box
                     sx={{
                         mt: 5,
