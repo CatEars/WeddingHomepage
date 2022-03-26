@@ -15,24 +15,27 @@ export type LinkInformation = {
     displayText: string;
 };
 
-export type LinkInformationCardContent = {
-    header: string;
-    message: string;
+export type TextCardContent = InformationCardContent & {
+    type: "text";
+};
+
+export type LinkInformationCardContent = InformationCardContent & {
+    type: "link";
     links: LinkInformation[];
 };
 
-export type ButtonInformationCardContent = {
-    header: string;
-    message: string;
+export type ButtonInformationCardContent = InformationCardContent & {
+    type: "button";
     buttonText: string;
 };
 
+export type InfoCard =
+    | TextCardContent
+    | LinkInformationCardContent
+    | ButtonInformationCardContent;
+
 export type InformationCardsContent = {
-    card1: InformationCardContent;
-    card2: InformationCardContent;
-    card3: InformationCardContent;
-    card4: LinkInformationCardContent;
-    card5: ButtonInformationCardContent;
+    cards: InfoCard[];
 };
 
 export type MapContent = {
@@ -107,37 +110,49 @@ const defaultText: TextContent = {
         },
     },
     info: {
-        card1: {
-            header: "Ta dig hit med",
-            message: "Bilen",
-        },
-        card2: {
-            header: "Toastmasters",
-            message: "Oj vad snygga dem ska vara då",
-        },
-        card3: {
-            header: "Svara nu",
-            message: '"Självklart, kommer jag/vi/oss"',
-        },
-        card4: {
-            header: "Ge bort",
-            message: "Ge bort grejer, hit istället",
-            links: [
-                {
-                    href: "https://www.wateraid.org",
-                    displayText: "www.wateraid.org",
-                },
-                {
-                    href: "https://www.redcross.org",
-                    displayText: "www.redcross.org",
-                },
-            ],
-        },
-        card5: {
-            header: "Skriv i nu!",
-            message: "Just do it!",
-            buttonText: "OSA",
-        },
+        cards: [
+            {
+                type: "text",
+                header: "Ta dig hit med",
+                message: "Bilen",
+            },
+            {
+                type: "text",
+                header: "Toastmasters",
+                message: "Oj vad snygga dem ska vara då",
+            },
+            {
+                type: "text",
+                header: "Svara nu",
+                message: '"Självklart, kommer jag/vi/oss"',
+            },
+            {
+                type: "link",
+                header: "Ge bort",
+                message: "Ge bort grejer, hit istället",
+                links: [
+                    {
+                        href: "https://www.wateraid.org",
+                        displayText: "www.wateraid.org",
+                    },
+                    {
+                        href: "https://www.redcross.org",
+                        displayText: "www.redcross.org",
+                    },
+                ],
+            },
+            {
+                type: "button",
+                header: "Skriv i nu!",
+                message: "Just do it!",
+                buttonText: "OSA",
+            },
+            {
+                type: "text",
+                header: "Do you even kid?",
+                message: "no",
+            },
+        ],
     },
     cta: {
         attend: {

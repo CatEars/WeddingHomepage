@@ -19,11 +19,7 @@ export type InfoCardMedia = {
 };
 
 export type InfoMedia = {
-    card1: InfoCardMedia;
-    card2: InfoCardMedia;
-    card3: InfoCardMedia;
-    card4: InfoCardMedia;
-    card5: InfoCardMedia;
+    cards: InfoCardMedia[];
 };
 
 export type HeroContent = {
@@ -55,21 +51,26 @@ const defaultMedia: MediaContent = {
         },
     },
     info: {
-        card1: {
-            url: "/info/terra.jpg",
-        },
-        card2: {
-            url: "/info/terra.jpg",
-        },
-        card3: {
-            url: "/info/terra.jpg",
-        },
-        card4: {
-            url: "/info/terra.jpg",
-        },
-        card5: {
-            url: "/info/terra.jpg",
-        },
+        cards: [
+            {
+                url: "/info/terra.jpg",
+            },
+            {
+                url: "/info/terra.jpg",
+            },
+            {
+                url: "/info/terra.jpg",
+            },
+            {
+                url: "/info/terra.jpg",
+            },
+            {
+                url: "/info/terra.jpg",
+            },
+            {
+                url: "/info/terra.jpg",
+            },
+        ],
     },
 };
 
