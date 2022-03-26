@@ -171,7 +171,7 @@ const defaultText: TextContent = {
         },
         thankYou: "Tack så mycket!",
         person: {
-            person: (index: number) => `Person ${index}`,
+            person: (index: number) => `Gäst ${index}`,
             diet: "diet",
             allEater: "Äter allt",
             allergies: "Allergier",
@@ -181,8 +181,8 @@ const defaultText: TextContent = {
         },
         form: {
             numberOfPeople: "Ditt antal personer",
-            rsvp: "R.S.V.P",
-            sendRsvp: "Skicka meddelande",
+            rsvp: "OSA",
+            sendRsvp: "Skicka in",
         },
     },
     map: {

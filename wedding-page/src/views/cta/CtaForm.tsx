@@ -1,26 +1,25 @@
-import { Typography, Button, Divider } from "@mui/material";
+import { Typography, Divider } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import TextField from "../../components/TextField";
-import { useForm } from './FormContext'
+import { useForm } from "./FormContext";
 import Person from "./Person";
 import ThankYouDialog from "./ThankYouDialog";
 import WillAttendControl from "./WillAttendControl";
-import text from '../../text-content'
+import Button from "../../components/Button";
+import text from "../../text-content";
 
 const CtaForm = () => {
-    const { 
-        state, 
-        setNumPeople,
-        setHasSent
-    } = useForm();
-    const onNumPeopleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const num = Number.parseInt(event.target.value)
+    const { state, setNumPeople, setHasSent } = useForm();
+    const onNumPeopleChange = (
+        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        const num = Number.parseInt(event.target.value);
         if (num) {
-            setNumPeople(num)    
+            setNumPeople(num);
         }
-    }
-    const t = text.cta.form
+    };
+    const t = text.cta.form;
     return (
         <Box
             component="form"
@@ -29,7 +28,7 @@ const CtaForm = () => {
                 setHasSent();
             }}
             sx={{
-                width: '80%'
+                width: "80%",
             }}
         >
             <Typography variant="h2" gutterBottom>
@@ -38,9 +37,7 @@ const CtaForm = () => {
             <Box sx={{ mt: 3, mb: 2 }}>
                 <WillAttendControl />
             </Box>
-            <Typography variant="h5">
-                {t.numberOfPeople}
-            </Typography>
+            <Typography variant="h5">{t.numberOfPeople}</Typography>
             <TextField
                 type="number"
                 onChange={onNumPeopleChange}
@@ -49,23 +46,18 @@ const CtaForm = () => {
                 sx={{ width: "100%", mt: 3, mb: 2 }}
             />
             {state.people.map((person, idx) => (
-                <Person
-                    key={`person-${idx}`}
-                    name={person.name}
-                    index={idx}
-                 />    
+                <Person key={`person-${idx}`} name={person.name} index={idx} />
             ))}
 
-            <Divider sx={{ mt: 3, mb: 3 }} />
-            <Button
-                type="submit"
-                color="primary"
-                variant="contained"
-                sx={{ width: "100%" }}
-                disabled={!!state.hasSent}
+            <Box
+                sx={{
+                    mt: 10,
+                    display: "flex",
+                    flexDirection: "row-reverse",
+                }}
             >
-                {t.sendRsvp}
-            </Button>
+                <Button disabled={!!state.hasSent} text={t.sendRsvp} />
+            </Box>
             <ThankYouDialog />
         </Box>
     );

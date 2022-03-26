@@ -25,6 +25,7 @@ const Button = (props: ButtonProps) => {
                 borderRadius: "18px",
                 color: "#FFF",
                 margin: "8px 0px",
+                padding: "8px 20px",
                 background,
                 "&:hover": {
                     background: "#4D5A4F",
