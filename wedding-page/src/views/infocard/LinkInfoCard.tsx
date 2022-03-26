@@ -30,7 +30,9 @@ const LinkInfoCard = (props: LinkInfoCardProps) => (
         </Typography>
         {props.links.map((link, idx) => (
             <Typography key={`card-link-${idx}`} variant="h5" sx={{ mt: 2 }}>
-                <Link href={link.href}>{link.displayText}</Link>
+                <Link sx={{ color: "primary.dark" }} href={link.href}>
+                    {link.displayText}
+                </Link>
             </Typography>
         ))}
     </ImageCard>

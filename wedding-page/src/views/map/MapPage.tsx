@@ -19,7 +19,12 @@ const Map = () => (
         />
         <Marker position={media.map.position}>
             <Popup>
-                <Link href={media.map.link} target="_blank" rel="noreferrer">
+                <Link
+                    sx={{ color: "primary.dark" }}
+                    href={media.map.link}
+                    target="_blank"
+                    rel="noreferrer"
+                >
                     {text.map.coordinates}
                 </Link>
             </Popup>

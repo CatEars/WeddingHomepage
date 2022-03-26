@@ -6,6 +6,8 @@ const rawTheme = createTheme({
         primary: {
             // beige
             main: "#F3EFE8",
+            // rust
+            dark: "#B56645",
         },
         secondary: {
             // light beige
@@ -39,7 +41,7 @@ const rawTheme = createTheme({
 const fontHeader = {
     color: rawTheme.palette.text.primary,
     fontWeight: rawTheme.typography.fontWeightMedium,
-    fontFamily: "'Roboto Condensed', sans-serif",
+    fontFamily: "Open Sans",
     textTransform: "uppercase",
 };
 
