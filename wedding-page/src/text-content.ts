@@ -86,6 +86,7 @@ export type TextContent = {
     contacts: ContactsContent;
     cta: CtaContent;
     map: MapContent;
+    title?: string;
 };
 
 const defaultText: TextContent = {
@@ -164,6 +165,7 @@ const defaultText: TextContent = {
         header: "Detta är ett karta",
         link: "Hitta hit",
     },
+    title: "Gifta sig - Woop Woop!",
 };
 
 export const initializeText = async (): Promise<void> => {
