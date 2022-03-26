@@ -88,12 +88,25 @@ export type CtaContent = {
     form: CtaFormContent;
 };
 
+export type FooterContact = {
+    name: string;
+    phone: string;
+};
+
+export type FooterContent = {
+    heading: string;
+    mail: string;
+    contact1: FooterContact;
+    contact2: FooterContact;
+};
+
 export type TextContent = {
     hero: HeroTextContent;
     info: InformationCardsContent;
     contacts: ContactsContent;
     cta: CtaContent;
     map: MapContent;
+    footer: FooterContent;
     title?: string;
 };
 
@@ -189,6 +202,18 @@ const defaultText: TextContent = {
         header: "Detta är ett karta",
         subtext: "Placey placey",
         coordinates: "51.0 N, -2 E",
+    },
+    footer: {
+        heading: "Kom i kontakt med oss",
+        mail: "mail.example.com",
+        contact1: {
+            name: "Girl",
+            phone: "098 - 76 54 321",
+        },
+        contact2: {
+            name: "Guy",
+            phone: "123 - 45 67 890",
+        },
     },
     title: "Gifta sig - Woop Woop!",
 };

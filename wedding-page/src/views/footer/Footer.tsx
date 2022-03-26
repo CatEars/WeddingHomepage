@@ -1,5 +1,6 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography, useTheme } from "@mui/material";
 import React from "react";
+import text from "../../text-content";
 
 type ContactProps = {
     name: string;
@@ -18,6 +19,7 @@ const Contact = (props: ContactProps) => {
 };
 
 const Footer = () => {
+    const theme = useTheme();
     return (
         <Box
             sx={{
@@ -37,16 +39,31 @@ const Footer = () => {
                 }}
             >
                 <Typography variant="h2" sx={{ color: "primary.main" }}>
-                    Kom i kontakt med oss
+                    {text.footer.heading}
                 </Typography>
-                <Typography variant="subtitle1">mail.example.com</Typography>
+                <Typography variant="subtitle1">{text.footer.mail}</Typography>
                 <Grid container spacing={5} sx={{ mt: 5 }}>
-                    <Grid item xs={0} md={3} />
-                    <Grid item xs={12} md={3}>
-                        <Contact name="Girl" phone="098 - 76 54 321" />
+                    <Grid
+                        item
+                        sx={{
+                            [theme.breakpoints.down("sm")]: {
+                                display: "none",
+                            },
+                        }}
+                        xs={12}
+                        md={3}
+                    />
+                    <Grid item xs={6} md={3}>
+                        <Contact
+                            name={text.footer.contact1.name}
+                            phone={text.footer.contact1.phone}
+                        />
                     </Grid>
-                    <Grid item xs={12} md={3}>
-                        <Contact name="Guy" phone="123 - 45 67 890" />
+                    <Grid item xs={6} md={3}>
+                        <Contact
+                            name={text.footer.contact2.name}
+                            phone={text.footer.contact2.phone}
+                        />
                     </Grid>
                 </Grid>
             </Container>
