@@ -1,8 +1,9 @@
 import _ from "lodash";
 
 export type HeroTextContent = {
-    landingMessage: string;
-    landingSubMessage: string;
+    date: string;
+    time: string;
+    place: string;
 };
 
 export type InformationCardContent = {
@@ -95,8 +96,9 @@ export type TextContent = {
 
 const defaultText: TextContent = {
     hero: {
-        landingMessage: "Att gifta sig är skojsigt",
-        landingSubMessage: "Väldigt kul, faktiskt",
+        date: "1st Jan 1970",
+        time: "4 o'clock in the afternoon",
+        place: "backyard",
     },
     contacts: {
         contact1: {

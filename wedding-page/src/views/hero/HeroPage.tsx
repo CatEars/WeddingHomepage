@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import ProductHeroLayout from "./HeroLayout";
 import text from "../../text-content";
 import media from "../../media-content";
@@ -19,11 +19,21 @@ export default function ProductHero() {
                 src={media.hero.backgroundUrl}
                 alt="increase priority"
             />
-            <Typography color="inherit" align="center" variant="h2">
-                {text.hero.landingMessage}
+            {media.hero.heroIconUrl ? (
+                <Box component="img" src={media.hero.heroIconUrl} />
+            ) : (
+                <Typography variant="h2" color="inherit" sx={{ mt: 2 }}>
+                    Placeholder
+                </Typography>
+            )}
+            <Typography variant="body2" color="inherit" sx={{ mt: 1 }}>
+                {text.hero.date}
             </Typography>
-            <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
-                {text.hero.landingSubMessage}
+            <Typography variant="body2" color="inherit" sx={{ mt: 1 }}>
+                {text.hero.time}
+            </Typography>
+            <Typography variant="body2" color="inherit" sx={{ mt: 1 }}>
+                {text.hero.place}
             </Typography>
         </ProductHeroLayout>
     );

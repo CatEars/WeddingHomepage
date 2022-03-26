@@ -24,6 +24,7 @@ export type InfoMedia = {
 
 export type HeroContent = {
     backgroundUrl: string;
+    heroIconUrl?: string;
 };
 
 export type MediaContent = {
