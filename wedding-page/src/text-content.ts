@@ -49,10 +49,12 @@ export type MapContent = {
 export type ContactCard = {
     name: string;
     contact: string;
-    description: string;
 };
 
 export type ContactsContent = {
+    header: string;
+    message: string;
+    mail: string;
     contact1: ContactCard;
     contact2: ContactCard;
 };
@@ -103,15 +105,17 @@ const defaultText: TextContent = {
         buttonText: "OSA",
     },
     contacts: {
+        header: "Toastmasters",
+        message:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vehicula id lorem vitae consectetur. Etiam a lacus enim.",
+        mail: "mail.example.com",
         contact1: {
             name: "John Doe",
-            contact: "0123456789",
-            description: "Toast master #1",
+            contact: "012 - 34 56 789",
         },
         contact2: {
             name: "Jane Doe",
-            contact: "9876543210",
-            description: "Alpha toast master",
+            contact: "987 - 65 43 210",
         },
     },
     info: {
