@@ -4,7 +4,7 @@ import ProductHeroLayout from "./HeroLayout";
 import text from "../../text-content";
 import media from "../../media-content";
 import { useScroll } from "../scroll";
-import Button from "../../components/Button";
+import BigButton from "../../components/BigButton";
 
 export default function ProductHero() {
     const { cta, scrollToRef } = useScroll();
@@ -38,8 +38,11 @@ export default function ProductHero() {
             <Typography variant="body2" color="inherit" sx={{ mt: 1 }}>
                 {text.hero.place}
             </Typography>
-            <Box sx={{ mt: 2 }}>
-                <Button text="OSA" onClick={() => scrollToRef(cta)} />
+            <Box sx={{ mt: 4 }}>
+                <BigButton
+                    text={text.hero.buttonText}
+                    onClick={() => scrollToRef(cta)}
+                />
             </Box>
         </ProductHeroLayout>
     );

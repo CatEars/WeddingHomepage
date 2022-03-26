@@ -4,6 +4,7 @@ export type HeroTextContent = {
     date: string;
     time: string;
     place: string;
+    buttonText: string;
 };
 
 export type InformationCardContent = {
@@ -99,6 +100,7 @@ const defaultText: TextContent = {
         date: "1st Jan 1970",
         time: "4 o'clock in the afternoon",
         place: "backyard",
+        buttonText: "OSA",
     },
     contacts: {
         contact1: {
