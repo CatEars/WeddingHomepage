@@ -31,7 +31,7 @@ const InfocardPage = () => {
             sx={{
                 display: "flex",
                 overflow: "hidden",
-                bgcolor: "secondary.light",
+                bgcolor: "primary.main",
             }}
             component="section"
         >

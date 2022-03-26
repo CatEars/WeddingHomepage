@@ -8,7 +8,7 @@ const ContactPage = () => {
     const { contact } = useScroll();
     return (
         <Box
-            sx={{ display: "flex", bgcolor: "primary.light" }}
+            sx={{ display: "flex", bgcolor: "secondary.main" }}
             component="section"
             ref={contact}
         >

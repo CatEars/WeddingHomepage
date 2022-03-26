@@ -30,6 +30,13 @@ const Button = (props: ButtonProps) => {
                     background: "#4D5A4F",
                 },
                 minWidth: "100px",
+                fontSize: "14px",
+                fontWeight: "600",
+                fontFamily: "Open Sans",
+                fontStyle: "normal",
+                letterSpacing: "0.1em",
+                boxShadow:
+                    "0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12)",
             }}
             disabled={props.disabled}
             onClick={() => {

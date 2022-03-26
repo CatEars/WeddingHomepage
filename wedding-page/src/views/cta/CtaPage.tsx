@@ -6,37 +6,41 @@ import { FormProvider } from "./FormContext";
 import DebugFormDisplay from "./DebugFormDisplay";
 import { useScroll } from "../scroll";
 
-type CtaPageProps = {
-    refProp: React.RefObject<HTMLElement>;
-};
-
 const CtaPage = () => {
     const { cta } = useScroll();
     return (
-        <Container component="section" sx={{ mt: 10, mb: 20, display: "flex" }}>
-            <Box ref={cta} />
-            <FormProvider>
-                <Grid container sx={{ justifyContent: "center" }}>
-                    <Grid item xs={12} md={8}>
-                        <Box
-                            sx={{
-                                display: "flex",
-                                justifyContent: "center",
-                                bgcolor: "warning.main",
-                                py: 8,
-                            }}
-                        >
-                            <CtaForm />
-                        </Box>
-                    </Grid>
-                    {/*
+        <Box
+            sx={{ display: "flex", bgcolor: "secondary.main" }}
+            component="section"
+            ref={cta}
+        >
+            <Container
+                component="section"
+                sx={{ mt: 10, mb: 20, display: "flex" }}
+            >
+                <FormProvider>
+                    <Grid container sx={{ justifyContent: "center" }}>
                         <Grid item xs={12} md={8}>
-                            <DebugFormDisplay />    
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    bgcolor: "primary.main",
+                                    py: 8,
+                                }}
+                            >
+                                <CtaForm />
+                            </Box>
                         </Grid>
-                        */}
-                </Grid>
-            </FormProvider>
-        </Container>
+                        {/*
+                            <Grid item xs={12} md={8}>
+                                <DebugFormDisplay />    
+                            </Grid>
+                            */}
+                    </Grid>
+                </FormProvider>
+            </Container>
+        </Box>
     );
 };
 

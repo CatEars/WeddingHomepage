@@ -33,7 +33,7 @@ const MapPage = () => {
         <Box
             component="section"
             sx={{
-                bgcolor: "secondary.main",
+                bgcolor: "primary.main",
                 display: "flex",
                 overflow: "hidden",
             }}
@@ -44,12 +44,11 @@ const MapPage = () => {
                     mt: 10,
                     mb: 10,
                     textAlign: "center",
-                    bgcolor: "secondary.main",
                 }}
             >
                 <Typography variant="h2">{text.map.header}</Typography>
 
-                <Link href={media.map.link}>
+                <Link sx={{ color: "black" }} href={media.map.link}>
                     <Typography variant="subtitle1">
                         {text.map.subtext}
                     </Typography>
