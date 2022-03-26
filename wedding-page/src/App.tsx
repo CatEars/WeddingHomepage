@@ -13,6 +13,7 @@ import MapPage from "./views/map/MapPage";
 import { ScrollToContextProvider } from "./views/scroll";
 import "./base.css";
 import text from "./text-content";
+import Footer from "./views/footer/Footer";
 
 const useCustomWebsiteTitle = () => {
     useEffect(() => {
@@ -30,6 +31,7 @@ const App = () => {
                 <ContactPage />
                 <MapPage />
                 <CtaPage />
+                <Footer />
             </ScrollToContextProvider>
         </ThemeProvider>
     );

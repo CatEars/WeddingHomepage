@@ -10,6 +10,8 @@ const rawTheme = createTheme({
         secondary: {
             // light beige
             main: "#F9F7F4",
+            // darker green
+            dark: "#76887C",
         },
         warning: {
             main: "#ffc071",
