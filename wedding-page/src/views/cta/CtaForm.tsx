@@ -8,9 +8,12 @@ import ThankYouDialog from "./ThankYouDialog";
 import WillAttendControl from "./WillAttendControl";
 import Button from "../../components/Button";
 import text from "../../text-content";
+import FakeSubmitter from "./submit/FakeSubmitter";
+import { getFromLocalStorage } from "./local-storage";
+import FormSubmitter from "./submit/FormSubmitter";
 
 const CtaForm = () => {
-    const { state, setNumPeople, setHasSent } = useForm();
+    const { state, setNumPeople, setIsSending } = useForm();
     const onNumPeopleChange = (
         event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
@@ -19,13 +22,13 @@ const CtaForm = () => {
             setNumPeople(num);
         }
     };
+    const useFakeSubmitter = getFromLocalStorage("WEDDING_FAKE_SUBMIT", "no");
     const t = text.cta.form;
     return (
         <Box
             component="form"
             onSubmit={(evt: React.FormEvent<HTMLFormElement>) => {
                 evt.preventDefault();
-                setHasSent();
             }}
             sx={{
                 width: "80%",
@@ -41,6 +44,7 @@ const CtaForm = () => {
             <TextField
                 type="number"
                 onChange={onNumPeopleChange}
+                value={state.numberOfAttendingPeople}
                 placeholder={t.numberOfPeople}
                 variant="standard"
                 sx={{ width: "100%", mt: 3, mb: 2 }}
@@ -56,8 +60,23 @@ const CtaForm = () => {
                     flexDirection: "row-reverse",
                 }}
             >
-                <Button disabled={!!state.hasSent} text={t.sendRsvp} />
+                <Button
+                    disabled={state.status !== "input"}
+                    loading={state.status === "isSending"}
+                    text={t.sendRsvp}
+                    onClick={() => {
+                        if (state.status === "input") {
+                            setIsSending();
+                        }
+                    }}
+                />
             </Box>
+            {state.status === "isSending" &&
+                (useFakeSubmitter === "yes" ? (
+                    <FakeSubmitter />
+                ) : (
+                    <FormSubmitter />
+                ))}
             <ThankYouDialog />
         </Box>
     );

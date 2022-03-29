@@ -1,5 +1,5 @@
 import React from "react";
-import { Button as MuiButton } from "@mui/material";
+import { Button as MuiButton, CircularProgress } from "@mui/material";
 
 /**
  * Enabled = #76887C
@@ -12,6 +12,7 @@ import { Button as MuiButton } from "@mui/material";
 
 type ButtonProps = {
     text: string;
+    loading?: boolean;
     disabled?: boolean;
     onClick?: () => void;
 };
@@ -26,6 +27,8 @@ const Button = (props: ButtonProps) => {
                 color: "#FFF",
                 margin: "8px 0px",
                 padding: "8px 20px",
+                height: "40px",
+                width: "130px",
                 background,
                 "&:hover": {
                     background: "#4D5A4F",
@@ -46,7 +49,11 @@ const Button = (props: ButtonProps) => {
                 }
             }}
         >
-            {props.text}
+            {props.loading ? (
+                <CircularProgress size={24} color="inherit" />
+            ) : (
+                props.text
+            )}
         </MuiButton>
     );
 };
