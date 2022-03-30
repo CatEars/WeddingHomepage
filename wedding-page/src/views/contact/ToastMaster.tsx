@@ -21,12 +21,10 @@ const ToastMaster = (props: ToastMasterProps) => (
             src={props.imageUrl}
             sx={{ width: 200, height: 200 }}
         />
-        <Typography variant="h6" sx={{ mt: 5 }} textAlign="center">
+        <Typography variant="h2" sx={{ mt: 5 }}>
             {props.name}
         </Typography>
-        <Typography variant="subtitle1" textAlign="center">
-            {props.contactDetails}
-        </Typography>
+        <Typography variant="body1">{props.contactDetails}</Typography>
     </Box>
 );
 

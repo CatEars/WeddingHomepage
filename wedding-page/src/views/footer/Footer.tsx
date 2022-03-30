@@ -10,7 +10,7 @@ type ContactProps = {
 const Contact = (props: ContactProps) => {
     return (
         <Box sx={{ flexDirection: "column" }}>
-            <Typography variant="h4" sx={{ color: "primary.main" }}>
+            <Typography variant="h2" sx={{ color: "primary.main" }}>
                 {props.name}
             </Typography>
             <Typography variant="body1">{props.phone}</Typography>
@@ -41,7 +41,7 @@ const Footer = () => {
                 <Typography variant="h2" sx={{ color: "primary.main" }}>
                     {text.footer.heading}
                 </Typography>
-                <Typography variant="subtitle1">{text.footer.mail}</Typography>
+                <Typography variant="body1">{text.footer.mail}</Typography>
                 <Grid container spacing={5} sx={{ mt: 5 }}>
                     <Grid
                         item

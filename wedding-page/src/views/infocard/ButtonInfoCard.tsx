@@ -13,14 +13,10 @@ type ButtonInfoCardProps = {
 
 const ButtonInfoCard = (props: ButtonInfoCardProps) => (
     <ImageCard imageUrl={props.imageUrl}>
-        <Typography variant="h6" sx={{ my: 3 }} textAlign="center">
+        <Typography variant="h2" sx={{ my: 3 }}>
             {props.header}
         </Typography>
-        <Typography
-            sx={{ mt: 0, mb: 3, textAlign: "left" }}
-            variant="h5"
-            textAlign="center"
-        >
+        <Typography sx={{ mt: 0, mb: 3 }} variant="body1" textAlign="left">
             {props.message}
         </Typography>
         <Button text={props.buttonText} onClick={props.onClick} />

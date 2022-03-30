@@ -54,11 +54,12 @@ const MapPage = () => {
                 <Typography variant="h2">{text.map.header}</Typography>
 
                 <Link sx={{ color: "black" }} href={media.map.link}>
-                    <Typography variant="subtitle1">
-                        {text.map.subtext}
-                    </Typography>
-                    <Typography variant="subtitle1">
+                    <Typography variant="body1">{text.map.subtext}</Typography>
+                    <Typography variant="body1">
                         {text.map.coordinates}
+                    </Typography>
+                    <Typography variant="body1">
+                        Klicka här för Google Maps
                     </Typography>
                 </Link>
                 <Box

@@ -29,13 +29,13 @@ export default function ProductHero() {
                     Placeholder
                 </Typography>
             )}
-            <Typography variant="body2" color="inherit" sx={{ mt: 1 }}>
+            <Typography variant="h2" color="inherit" sx={{ mt: 1 }}>
                 {text.hero.date}
             </Typography>
-            <Typography variant="body2" color="inherit" sx={{ mt: 1 }}>
+            <Typography variant="h2" color="inherit" sx={{ mt: 1 }}>
                 {text.hero.time}
             </Typography>
-            <Typography variant="body2" color="inherit" sx={{ mt: 1 }}>
+            <Typography variant="h2" color="inherit" sx={{ mt: 1 }}>
                 {text.hero.place}
             </Typography>
             <Box sx={{ mt: 4 }}>

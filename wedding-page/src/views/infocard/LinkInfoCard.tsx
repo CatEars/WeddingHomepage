@@ -18,18 +18,14 @@ type LinkProps = {
 
 const LinkInfoCard = (props: LinkInfoCardProps) => (
     <ImageCard imageUrl={props.imageUrl} onClick={props.onClick}>
-        <Typography variant="h6" sx={{ my: 3 }} textAlign="center">
+        <Typography variant="h2" sx={{ my: 3 }}>
             {props.header}
         </Typography>
-        <Typography
-            sx={{ mt: 0, mb: 3, textAlign: "left" }}
-            variant="h5"
-            textAlign="center"
-        >
+        <Typography sx={{ mt: 0, mb: 3 }} variant="body1" textAlign="left">
             {props.message}
         </Typography>
         {props.links.map((link, idx) => (
-            <Typography key={`card-link-${idx}`} variant="h5" sx={{ mt: 2 }}>
+            <Typography key={`card-link-${idx}`} variant="body1" sx={{ mt: 2 }}>
                 <Link sx={{ color: "primary.dark" }} href={link.href}>
                     {link.displayText}
                 </Link>

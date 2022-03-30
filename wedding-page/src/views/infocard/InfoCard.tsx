@@ -12,14 +12,10 @@ type InfoCardProps = {
 
 const InfoCard = (props: InfoCardProps) => (
     <ImageCard imageUrl={props.imageUrl} onClick={props.onClick}>
-        <Typography variant="h6" sx={{ my: 3 }} textAlign="center">
+        <Typography variant="h2" sx={{ my: 3 }}>
             {props.header}
         </Typography>
-        <Typography
-            sx={{ my: 0, textAlign: "left" }}
-            variant="h5"
-            textAlign="center"
-        >
+        <Typography sx={{ my: 0 }} variant="body1" textAlign="left">
             {props.message}
         </Typography>
     </ImageCard>
