@@ -8,7 +8,7 @@ import { useScroll } from "../scroll";
 import CardSelector from "./CardSelector";
 
 const InfocardPage = () => {
-    const { map, contact, cta, scrollToRef } = useScroll();
+    const { map, contact, cta, info, scrollToRef } = useScroll();
     const makeRefClicker = (ref: RefObject<ReactElement>) => () =>
         scrollToRef(ref);
 
@@ -34,6 +34,7 @@ const InfocardPage = () => {
                 bgcolor: "primary.main",
             }}
             component="section"
+            ref={info}
         >
             <Container
                 sx={{

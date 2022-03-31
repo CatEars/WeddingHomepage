@@ -9,6 +9,7 @@ export type ScrollableElements = {
     map: RefObject<ReactElement>;
     cta: RefObject<ReactElement>;
     contact: RefObject<ReactElement>;
+    info: RefObject<ReactElement>;
     scrollToRef: (ref?: RefObject<ReactElement>) => void;
 };
 
@@ -25,6 +26,7 @@ const defaultValue: ScrollableElements = {
     map: React.createRef(),
     cta: React.createRef(),
     contact: React.createRef(),
+    info: React.createRef(),
     scrollToRef,
 };
 

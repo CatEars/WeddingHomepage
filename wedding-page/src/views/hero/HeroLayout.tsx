@@ -3,29 +3,8 @@ import { Theme, styled } from "@mui/material/styles";
 import { SxProps } from "@mui/system";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-
-const HeroLayoutRoot = styled("section")(({ theme }) => ({
-    color: theme.palette.common.white,
-    position: "relative",
-    display: "flex",
-    alignItems: "center",
-    height: "100vh",
-    [theme.breakpoints.up("sm")]: {
-        minHeight: 500,
-        maxHeight: 1300,
-    },
-}));
-
-const Background = styled(Box)({
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    zIndex: -2,
-});
+import { useTheme } from "@mui/material";
+import MoreInfoButton from "./MoreInfoButton";
 
 interface HeroLayoutProps {
     sxBackground: SxProps<Theme>;
@@ -35,33 +14,53 @@ export default function HeroLayout(
     props: React.HTMLAttributes<HTMLDivElement> & HeroLayoutProps
 ) {
     const { sxBackground, children } = props;
-
+    const theme = useTheme();
     return (
-        <HeroLayoutRoot>
-            <Container
+        <Box
+            sx={{
+                color: theme.palette.common.white,
+                height: "100vh",
+                minHeight: "650px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                ...sxBackground,
+            }}
+            component="section"
+        >
+            <Box
                 sx={{
-                    mt: 3,
-                    mb: 14,
+                    height: "30vh",
+                    [theme.breakpoints.down("sm")]: {
+                        height: "10vh",
+                    },
+                }}
+            />
+            <Box>
+                <Container
+                    sx={{
+                        mt: 3,
+                        mb: 14,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                    }}
+                >
+                    {children}
+                </Container>
+            </Box>
+            <Box
+                sx={{
+                    height: "100%",
+                    width: "100%",
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "center",
+                    justifyContent: "flex-end",
+                    alignItems: "flex-end",
                 }}
             >
-                {children}
-                <Box
-                    sx={{
-                        position: "absolute",
-                        left: 0,
-                        right: 0,
-                        top: 0,
-                        bottom: 0,
-                        backgroundColor: "common.black",
-                        opacity: 0.5,
-                        zIndex: -1,
-                    }}
-                />
-                <Background sx={sxBackground} />
-            </Container>
-        </HeroLayoutRoot>
+                <MoreInfoButton />
+            </Box>
+        </Box>
     );
 }

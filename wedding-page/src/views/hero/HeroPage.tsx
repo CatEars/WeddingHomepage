@@ -14,6 +14,9 @@ export default function ProductHero() {
                 backgroundImage: `url(${media.hero.backgroundUrl})`,
                 backgroundColor: "#7fc7d9", // Average color of the background image.
                 backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                zIndex: -2,
             }}
         >
             {/* Increase the network loading priority of the background image. */}
