@@ -9,7 +9,7 @@ import { useScroll } from "../scroll";
 const Map = () => (
     <MapContainer
         center={media.map.position}
-        zoom={13}
+        zoom={12}
         scrollWheelZoom={false}
         dragging={false}
     >
