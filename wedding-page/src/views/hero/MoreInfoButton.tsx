@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "../../components/Button";
 import { Box, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useScroll } from "../scroll";

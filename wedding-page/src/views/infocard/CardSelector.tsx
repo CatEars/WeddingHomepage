@@ -1,4 +1,4 @@
-import React, { RefObject } from "react";
+import React from "react";
 import { InfoCard as InfoCardText } from "../../text-content";
 import { InfoCardMedia } from "../../media-content";
 import InfoCard from "./InfoCard";
