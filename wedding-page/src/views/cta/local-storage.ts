@@ -4,7 +4,7 @@ export const getFromLocalStorage = (
 ): string => {
     if (window && window.localStorage) {
         const value = window.localStorage.getItem(key);
-        if (value) {
+        if (value !== null) {
             return value;
         }
     }

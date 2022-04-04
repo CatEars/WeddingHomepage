@@ -81,7 +81,14 @@ export type CtaFormContent = {
     sendRsvp: string;
 };
 
+export type CtaHeader = {
+    main: string;
+    subtexts: string[];
+    link: string;
+};
+
 export type CtaContent = {
+    header: CtaHeader;
     attend: AttendanceContent;
     thankYou: string;
     person: CtaPersonContent;
@@ -177,6 +184,14 @@ const defaultText: TextContent = {
         ],
     },
     cta: {
+        header: {
+            main: "OSA",
+            subtexts: [
+                "Let us know if join party",
+                "please email within X hours of getting message at:",
+            ],
+            link: "mail.example.com",
+        },
         attend: {
             willAttend: "Kommer ni?",
             yesAnswer: "Jajamensan, självklart",
