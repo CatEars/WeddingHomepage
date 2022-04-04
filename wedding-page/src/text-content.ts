@@ -76,7 +76,6 @@ export type CtaPersonContent = {
 };
 
 export type CtaFormContent = {
-    rsvp: string;
     numberOfPeople: string;
     sendRsvp: string;
 };
@@ -209,7 +208,6 @@ const defaultText: TextContent = {
         },
         form: {
             numberOfPeople: "Ditt antal personer",
-            rsvp: "OSA",
             sendRsvp: "Skicka in",
         },
     },

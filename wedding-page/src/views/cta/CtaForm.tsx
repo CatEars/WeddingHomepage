@@ -11,17 +11,10 @@ import text from "../../text-content";
 import FakeSubmitter from "./submit/FakeSubmitter";
 import { getFromLocalStorage } from "./local-storage";
 import FormSubmitter from "./submit/FormSubmitter";
+import NumPeopleControl from "./NumPeopleControl";
 
 const CtaForm = () => {
-    const { state, setNumPeople, setIsSending } = useForm();
-    const onNumPeopleChange = (
-        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-        const num = Number.parseInt(event.target.value);
-        if (num) {
-            setNumPeople(num);
-        }
-    };
+    const { state, setIsSending } = useForm();
     const useFakeSubmitter = getFromLocalStorage("WEDDING_FAKE_SUBMIT", "no");
     const t = text.cta.form;
     return (
@@ -34,21 +27,10 @@ const CtaForm = () => {
                 width: "80%",
             }}
         >
-            <Typography variant="h2" gutterBottom>
-                {t.rsvp}
-            </Typography>
+            <NumPeopleControl />
             <Box sx={{ mt: 3, mb: 2 }}>
                 <WillAttendControl />
             </Box>
-            <Typography variant="h5">{t.numberOfPeople}</Typography>
-            <TextField
-                type="number"
-                onChange={onNumPeopleChange}
-                value={state.numberOfAttendingPeople}
-                placeholder={t.numberOfPeople}
-                variant="standard"
-                sx={{ width: "100%", mt: 3, mb: 2 }}
-            />
             {state.people.map((person, idx) => (
                 <Person key={`person-${idx}`} name={person.name} index={idx} />
             ))}
