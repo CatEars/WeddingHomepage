@@ -15,6 +15,9 @@ const rawTheme = createTheme({
             // darker green
             dark: "#76887C",
         },
+        info: {
+            main: "rgba(0, 0, 0, 0.6)",
+        },
         warning: {
             main: "#ffc071",
         },
@@ -42,6 +45,7 @@ const rawTheme = createTheme({
             textAlign: "center",
             lineHeight: "27px",
             fontSize: "20px",
+            fontWeight: 400,
         },
         body1: {
             textAlign: "center",

@@ -4,14 +4,14 @@ import {
     FormControl,
     FormControlLabel,
     FormLabel,
-    Radio,
     RadioGroup,
     Typography,
+    TextField,
 } from "@mui/material";
 import React from "react";
-import TextField from "../../components/TextField";
 import { useForm } from "./FormContext";
 import text from "../../text-content";
+import RadioControl from "./RadioControl";
 
 type PersonProps = {
     index: number;
@@ -27,7 +27,7 @@ const Person = (props: PersonProps) => {
     return (
         <Box>
             <Divider sx={{ mt: 3, mb: 3 }} textAlign="left">
-                <Typography variant="h5">{t.person(index + 1)}</Typography>
+                <Typography variant="h2">{t.person(index + 1)}</Typography>
             </Divider>
 
             <TextField
@@ -35,30 +35,39 @@ const Person = (props: PersonProps) => {
                     setName(index, evt.target.value || "");
                 }}
                 label={t.name}
-                placeholder={t.name}
-                variant="standard"
-                sx={{ width: "100%", mt: 3, mb: 2 }}
+                variant="outlined"
+                fullWidth
+                color="info"
+                sx={{
+                    mt: 3,
+                    mb: 2,
+                }}
                 value={props.name}
             />
             <FormControl>
-                <FormLabel>{t.diet}</FormLabel>
+                <FormLabel
+                    color="info"
+                    sx={{ textAlign: "left", mt: 3, mb: 3 }}
+                >
+                    {t.diet}
+                </FormLabel>
                 <RadioGroup defaultValue="all">
                     <FormControlLabel
                         onClick={() => setFood(index, "all")}
                         value="all"
-                        control={<Radio />}
+                        control={<RadioControl />}
                         label={t.allEater}
                     />
                     <FormControlLabel
                         onClick={() => setFood(index, "vegetarian")}
                         value="vegetarian"
-                        control={<Radio />}
+                        control={<RadioControl />}
                         label={t.vegetarian}
                     />
                     <FormControlLabel
                         onClick={() => setFood(index, "vegan")}
                         value="vegan"
-                        control={<Radio />}
+                        control={<RadioControl />}
                         label={t.vegan}
                     />
                 </RadioGroup>
@@ -66,9 +75,10 @@ const Person = (props: PersonProps) => {
             <TextField
                 onChange={(evt) => setAllergies(index, evt.target.value || "")}
                 label={t.allergies}
-                placeholder={t.allergies}
-                variant="standard"
-                sx={{ width: "100%", mt: 2 }}
+                fullWidth
+                variant="outlined"
+                color="info"
+                sx={{ mt: 2 }}
                 value={state.people[index].allergies}
             />
         </Box>

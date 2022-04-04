@@ -199,7 +199,7 @@ const defaultText: TextContent = {
         thankYou: "Tack så mycket!",
         person: {
             person: (index: number) => `Gäst ${index}`,
-            diet: "diet",
+            diet: "Diet",
             allEater: "Äter allt",
             allergies: "Allergier",
             name: "Namn",

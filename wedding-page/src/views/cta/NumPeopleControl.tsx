@@ -17,6 +17,7 @@ const NumPeopleControl = () => {
     return (
         <TextField
             fullWidth
+            color="info"
             label={text.cta.form.numberOfPeople}
             onChange={onNumPeopleChange}
             type="number"
