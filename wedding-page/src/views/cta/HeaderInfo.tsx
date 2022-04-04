@@ -5,8 +5,8 @@ import text from "../../text-content";
 const HeaderInfo = () => (
     <>
         <Typography variant="h1">{text.cta.header.main}</Typography>
-        {text.cta.header.subtexts.map((text) => (
-            <Typography variant="body1" sx={{ mt: 2 }}>
+        {text.cta.header.subtexts.map((text, idx) => (
+            <Typography key={`subtext-${idx}`} variant="body1" sx={{ mt: 2 }}>
                 {text}
             </Typography>
         ))}
