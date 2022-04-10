@@ -83,7 +83,10 @@ const setNumPeople = (
     action: CtaFormAction & { type: "setNum" }
 ) => {
     const nextState = _.cloneDeep(state);
-    nextState.numberOfAttendingPeople = action.numberOfAttendingPeople;
+    nextState.numberOfAttendingPeople = Math.max(
+        Math.min(action.numberOfAttendingPeople, 20),
+        1
+    );
     while (nextState.people.length > nextState.numberOfAttendingPeople) {
         nextState.people.pop();
     }
