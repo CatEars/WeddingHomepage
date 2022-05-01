@@ -53,13 +53,13 @@ const MapPage = () => {
             >
                 <Typography variant="h2">{text.map.header}</Typography>
 
+                <Typography sx={{ mt: 2 }} variant="body1">
+                    {text.map.subtext}
+                </Typography>
+                <Typography variant="body1">{text.map.coordinates}</Typography>
                 <Link sx={{ color: "black" }} href={media.map.link}>
-                    <Typography variant="body1">{text.map.subtext}</Typography>
-                    <Typography variant="body1">
-                        {text.map.coordinates}
-                    </Typography>
-                    <Typography variant="body1">
-                        Klicka här för Google Maps
+                    <Typography sx={{ mt: 2 }} variant="body1">
+                        {text.map.link}
                     </Typography>
                 </Link>
                 <Box

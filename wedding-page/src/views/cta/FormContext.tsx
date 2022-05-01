@@ -179,8 +179,13 @@ const reducer = (state: CtaFormValues, action: CtaFormAction) => {
 const initialState: CtaFormValues = {
     willAttend: true,
     status: "input",
-    numberOfAttendingPeople: 1,
+    numberOfAttendingPeople: 2,
     people: [
+        {
+            name: "",
+            foodChoice: "all",
+            allergies: "",
+        },
         {
             name: "",
             foodChoice: "all",

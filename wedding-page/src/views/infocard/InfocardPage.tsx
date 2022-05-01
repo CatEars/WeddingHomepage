@@ -14,8 +14,8 @@ const InfocardPage = () => {
 
     const onClicks = [
         makeRefClicker(map),
-        makeRefClicker(contact),
-        makeRefClicker(cta),
+        undefined,
+        undefined,
         undefined,
         makeRefClicker(cta),
         undefined,

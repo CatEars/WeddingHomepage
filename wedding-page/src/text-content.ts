@@ -44,6 +44,7 @@ export type MapContent = {
     header: string;
     subtext: string;
     coordinates: string;
+    link: string;
 };
 
 export type ContactCard = {
@@ -53,7 +54,7 @@ export type ContactCard = {
 
 export type ContactsContent = {
     header: string;
-    message: string;
+    message: string[];
     mail: string;
     contact1: ContactCard;
     contact2: ContactCard;
@@ -125,8 +126,9 @@ const defaultText: TextContent = {
     },
     contacts: {
         header: "Toastmasters",
-        message:
+        message: [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vehicula id lorem vitae consectetur. Etiam a lacus enim.",
+        ],
         mail: "mail.example.com",
         contact1: {
             name: "John Doe",
@@ -215,6 +217,7 @@ const defaultText: TextContent = {
         header: "Detta är ett karta",
         subtext: "Placey placey",
         coordinates: "51.0 N, -2 E",
+        link: "Klicka här",
     },
     footer: {
         heading: "Kom i kontakt med oss",
