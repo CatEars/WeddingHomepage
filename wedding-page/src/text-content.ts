@@ -9,6 +9,7 @@ export type HeroTextContent = {
 
 export type InformationCardContent = {
     header: string;
+    message: string | string[];
 };
 
 export type LinkInformation = {
@@ -18,19 +19,16 @@ export type LinkInformation = {
 
 export type TextCardContent = InformationCardContent & {
     type: "text";
-    message: string | string[];
 };
 
 export type LinkInformationCardContent = InformationCardContent & {
     type: "link";
     links: LinkInformation[];
-    message: string;
 };
 
 export type ButtonInformationCardContent = InformationCardContent & {
     type: "button";
     buttonText: string;
-    message: string;
 };
 
 export type InfoCard =
