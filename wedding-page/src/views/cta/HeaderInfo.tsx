@@ -11,7 +11,7 @@ const HeaderInfo = () => (
             </Typography>
         ))}
         <Typography variant="body1">
-            <Link sx={{ color: "primary.dark" }}>{text.cta.header.link}</Link>
+            <Link href={`mailto:${text.cta.header.link}`} sx={{ color: "primary.dark" }}>{text.cta.header.link}</Link>
         </Typography>
     </>
 );
