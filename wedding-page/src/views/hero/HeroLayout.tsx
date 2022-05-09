@@ -30,7 +30,7 @@ export default function HeroLayout(
         >
             <Box
                 sx={{
-                    height: "30vh",
+                    height: "70vh",
                     [theme.breakpoints.down("sm")]: {
                         height: "10vh",
                     },

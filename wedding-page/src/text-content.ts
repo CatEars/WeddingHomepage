@@ -7,9 +7,20 @@ export type HeroTextContent = {
     buttonText: string;
 };
 
+export type ComplexMessage = {
+    type: 'link';
+    displayText: string;
+    link: string;
+} | {
+    type: 'text';
+    text: string;
+}
+
+export type InfoCardMessage = string | string[] | ComplexMessage[][];
+
 export type InformationCardContent = {
     header: string;
-    message: string | string[];
+    message: InfoCardMessage;
 };
 
 export type LinkInformation = {

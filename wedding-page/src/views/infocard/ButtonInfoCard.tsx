@@ -3,10 +3,11 @@ import { Typography } from "@mui/material";
 import ImageCard from "./ImageCard";
 import Button from "../../components/Button";
 import CardText from "./CardText";
+import { InfoCardMessage } from "../../text-content";
 
 type ButtonInfoCardProps = {
     header: string;
-    message: string | string[];
+    message: InfoCardMessage;
     imageUrl: string;
     buttonText: string;
     onClick?: () => void;

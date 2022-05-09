@@ -1,12 +1,13 @@
 import { Link, Typography } from "@mui/material";
 import React from "react";
+import { InfoCardMessage } from "../../text-content";
 import CardText from "./CardText";
 
 import ImageCard from "./ImageCard";
 
 type LinkInfoCardProps = {
     header: string;
-    message: string | string[];
+    message: InfoCardMessage;
     onClick?: () => void;
     imageUrl: string;
     links: LinkProps[];
