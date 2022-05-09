@@ -21,7 +21,7 @@ const ToastMaster = (props: ToastMasterProps) => (
             src={props.imageUrl}
             sx={{ width: 200, height: 200 }}
         />
-        <Typography variant="h2" sx={{ mt: 5 }}>
+        <Typography variant="h2" sx={{ mt: 3 }}>
             {props.name}
         </Typography>
         <Typography variant="body1">{props.contactDetails}</Typography>
