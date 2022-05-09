@@ -12,11 +12,11 @@ const CardText = (props: CardTextProps) => (
             {props.header}
         </Typography>
         {Array.isArray(props.message) ? (
-            props.message.map((msg, idx) => (<Typography sx={{ my: idx === 0 ? 0 : 2 }} variant="body1" textAlign="left">
+            props.message.map((msg, idx) => (<Typography sx={{ my: idx === 0 ? 0 : 2 }} variant="body1" textAlign="center">
                 {msg}
             </Typography>))
         ) : (
-            <Typography sx={{ my: 0 }} variant="body1" textAlign="left">
+            <Typography sx={{ my: 0 }} variant="body1" textAlign="center">
                 {props.message}
             </Typography>
         )}
