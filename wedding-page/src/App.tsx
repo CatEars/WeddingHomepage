@@ -6,7 +6,7 @@ import "@fontsource/open-sans/600.css";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 import HeroPage from "./views/hero/HeroPage";
-import InfoCards from "./views/infocard/InfoCardPage";
+import InfoCards from "./views/infocard/InfocardPage";
 import CtaPage from "./views/cta/CtaPage";
 import ContactPage from "./views/contact/ContactPage";
 import MapPage from "./views/map/MapPage";

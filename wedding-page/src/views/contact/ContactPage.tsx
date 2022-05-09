@@ -23,8 +23,8 @@ const ContactPage = () => {
                 }}
             >
                 <Typography variant="h2">{text.contacts.header}</Typography>
-                {text.contacts.message.map((text) => (
-                    <Typography sx={{ mt: 2 }} variant="body1">
+                {text.contacts.message.map((text, idx) => (
+                    <Typography key={`typography-${idx}`} sx={{ mt: 2 }} variant="body1">
                         {text}
                     </Typography>
                 ))}
