@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Link, Typography } from "@mui/material";
 import text from "../../text-content";
 import media from "../../media-content";
 import ToastMaster from "./ToastMaster";
@@ -29,7 +29,7 @@ const ContactPage = () => {
                     </Typography>
                 ))}
                 <Typography sx={{ mt: 2 }} variant="body1">
-                    {text.contacts.mail}
+                    <Link sx={{ color: "primary.dark" }} href={`mailto:${text.contacts.mail}`}>{text.contacts.mail}</Link>
                 </Typography>
             </Container>
             <Container sx={{ display: "flex", mt: 20, mb: 20 }}>
