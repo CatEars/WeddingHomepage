@@ -2,7 +2,7 @@ import subprocess
 import os
 import shutil
 
-docker_tag = 'wedding-server:v0.0.2-c'
+docker_tag = 'wedding-server:v0.1.0'
 
 def get_relative_directory(folder_name: str) -> str:
     top_directory = os.path.dirname(os.path.realpath(__file__))
