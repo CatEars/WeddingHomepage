@@ -1,18 +1,40 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { InfoCardMessage, ComplexMessage } from "../../text-content";
-
-type ComplexTextTypographyProps = {
-    message: ComplexMessage[][];
-};
-
-const ComplexTextTypography = (props: ComplexTextTypographyProps) => {
-    return <>{props.message}</>;
-};
+import { InfoCardMessage } from "../../text-content";
+import ComplexTextTypography from "./ComplexTextTypography";
 
 type CardTextProps = {
     header: string;
     message: InfoCardMessage;
+};
+
+const InnerText = (props: { message: InfoCardMessage }) => {
+    if (typeof props.message === "string") {
+        return (
+            <Typography sx={{ my: 0 }} variant="body1" textAlign="center">
+                {props.message}
+            </Typography>
+        );
+    }
+
+    if (typeof props.message[0] === "string") {
+        return (
+            <>
+                {props.message.map((msg, idx) => (
+                    <Typography
+                        sx={{ my: idx === 0 ? 0 : 2 }}
+                        variant="body1"
+                        textAlign="center"
+                    >
+                        {msg}
+                    </Typography>
+                ))}
+            </>
+        );
+    }
+
+    const msg: any = props.message;
+    return <ComplexTextTypography message={msg} />;
 };
 
 const CardText = (props: CardTextProps) => {
@@ -21,23 +43,7 @@ const CardText = (props: CardTextProps) => {
             <Typography variant="h2" sx={{ my: 3 }}>
                 {props.header}
             </Typography>
-            {Array.isArray(props.message) ? (
-                props.message.map((msg, idx) => (
-                    <Typography
-                        sx={{ my: idx === 0 ? 0 : 2 }}
-                        variant="body1"
-                        textAlign="center"
-                    >
-                        {msg}
-                    </Typography>
-                ))
-            ) : typeof props.message === "string" ? (
-                <Typography sx={{ my: 0 }} variant="body1" textAlign="center">
-                    {props.message}
-                </Typography>
-            ) : (
-                <ComplexTextTypography message={props.message} />
-            )}
+            <InnerText message={props.message} />
         </Box>
     );
 };
