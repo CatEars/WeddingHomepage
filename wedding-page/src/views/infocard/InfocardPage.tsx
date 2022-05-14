@@ -42,6 +42,10 @@ const InfocardPage = () => {
                     position: "relative",
                     mt: 30,
                     mb: 30,
+                    [theme.breakpoints.down("sm")]: {
+                        mt: 10,
+                        mb: 10,
+                    },
                     [theme.breakpoints.up("lg")]: {
                         maxWidth: 1500,
                     },

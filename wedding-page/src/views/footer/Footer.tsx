@@ -36,6 +36,10 @@ const Footer = () => {
                     flexDirection: "column",
                     mt: 20,
                     mb: 20,
+                    [theme.breakpoints.down("sm")]: {
+                        mt: 10,
+                        mb: 10,
+                    },
                 }}
             >
                 <Typography variant="h2" sx={{ color: "primary.main" }}>
