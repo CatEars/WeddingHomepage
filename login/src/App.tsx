@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
+import "@fontsource/playfair-display";
+import "@fontsource/playfair-display/400.css";
+import "@fontsource/open-sans";
+import "@fontsource/open-sans/600.css";
 import { ThemeProvider } from "@mui/material/styles";
-import { Container, CssBaseline, TextField } from "@mui/material";
+import { Container, CssBaseline, Grid, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { login } from "./api";
 import { serialize } from "cookie";
@@ -8,6 +12,12 @@ import theme from "./theme";
 import BackgroundColor from "./BackgroundColor";
 import media from "./media-content";
 import Button from "./Button";
+
+const useCustomWebsiteTitle = (title: string) => {
+    useEffect(() => {
+        document.title = title;
+    }, []);
+};
 
 const generateCookie = (token: string): string => {
     const currentDate = new Date();
@@ -44,16 +54,22 @@ function App() {
         }
     };
 
+    useCustomWebsiteTitle(media.websiteName);
+
     return (
         <ThemeProvider theme={theme}>
-            <Container>
+            <Container
+                component="section"
+                sx={{
+                    mt: 10,
+                    mb: 20,
+                    display: "flex",
+                    flexDirection: "column",
+                }}
+            >
                 <CssBaseline />
                 <BackgroundColor />
-                <Box
-                    sx={{
-                        mt: 10,
-                    }}
-                >
+                <Box>
                     <Box
                         component="img"
                         src={media.iconUrl}
@@ -65,51 +81,51 @@ function App() {
                         }}
                     />
                 </Box>
-                <Box
-                    component="form"
-                    onSubmit={onSubmit}
-                    noValidate
-                    sx={{
-                        mt: 1,
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <TextField
-                            color="info"
-                            margin="normal"
-                            required
-                            name="password"
-                            label="Lösenord"
-                            id="current-password"
-                            autoComplete="current-password"
+                <Grid container sx={{ justifyContent: "center" }}>
+                    <Grid item xs={12} md={8}>
+                        <Box
                             sx={{
-                                background: "white",
-                                width: "80%",
-                                [theme.breakpoints.up("sm")]: {
-                                    width: "50vh",
-                                },
+                                display: "flex",
+                                justifyContent: "center",
+                                py: 8,
                             }}
-                        />
-                    </Box>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "center",
-                            mt: 3,
-                        }}
-                    >
-                        <Button submit text="Logga In" />
-                    </Box>
-                </Box>
+                        >
+                            <Box
+                                component="form"
+                                onSubmit={onSubmit}
+                                sx={{
+                                    width: "80%",
+                                }}
+                            >
+                                <Box>
+                                    <TextField
+                                        label="Lösenord"
+                                        variant="outlined"
+                                        fullWidth
+                                        color="info"
+                                        sx={{
+                                            mt: 3,
+                                            width: "80%",
+                                            [theme.breakpoints.up("sm")]: {
+                                                width: "50vh",
+                                            },
+                                        }}
+                                    />
+                                </Box>
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        justifyContent: "center",
+                                        mt: 3,
+                                    }}
+                                >
+                                    <Button submit text="Logga In" />
+                                </Box>
+                            </Box>
+                        </Box>
+                    </Grid>
+                </Grid>
             </Container>
         </ThemeProvider>
     );

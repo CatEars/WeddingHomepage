@@ -2,10 +2,12 @@ import _ from "lodash";
 
 export type MediaContent = {
     iconUrl: string;
+    websiteName: string;
 };
 
 const defaultMedia: MediaContent = {
     iconUrl: "",
+    websiteName: "-",
 };
 
 export const initializeMedia = async (): Promise<void> => {
