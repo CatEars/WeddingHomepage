@@ -1,5 +1,5 @@
 import React from "react";
-import { Button as MuiButton, CircularProgress, SxProps } from "@mui/material";
+import { Button as MuiButton, SxProps } from "@mui/material";
 
 /**
  * Enabled = #76887C
@@ -13,14 +13,11 @@ import { Button as MuiButton, CircularProgress, SxProps } from "@mui/material";
 type ButtonProps = {
     text: string;
     sx?: SxProps;
-    loading?: boolean;
-    disabled?: boolean;
-    submit?: boolean;
     onClick?: () => void;
 };
 
 const Button = (props: ButtonProps) => {
-    const background = props.disabled ? "rgba(0, 0, 0, 0.12)" : "#76887C";
+    const background = "#76887C";
 
     return (
         <MuiButton
@@ -45,19 +42,13 @@ const Button = (props: ButtonProps) => {
                     "0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12)",
                 ...props.sx,
             }}
-            type={props.submit ? "submit" : undefined}
-            disabled={props.disabled}
             onClick={() => {
-                if (!props.disabled && props.onClick) {
+                if (props.onClick) {
                     props.onClick();
                 }
             }}
         >
-            {props.loading ? (
-                <CircularProgress size={24} color="inherit" />
-            ) : (
-                props.text
-            )}
+            {props.text}
         </MuiButton>
     );
 };

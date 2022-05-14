@@ -1,10 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "@fontsource/playfair-display";
 import "@fontsource/playfair-display/400.css";
 import "@fontsource/open-sans";
 import "@fontsource/open-sans/600.css";
 import { ThemeProvider } from "@mui/material/styles";
-import { Container, CssBaseline, Grid, TextField } from "@mui/material";
+import {
+    Container,
+    CssBaseline,
+    Grid,
+    Snackbar,
+    TextField,
+    Alert,
+    Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { login } from "./api";
 import { serialize } from "cookie";
@@ -33,10 +41,11 @@ const generateCookie = (token: string): string => {
 };
 
 function App() {
-    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        const secret = (data.get("password") || "") as string;
+    const [password, setPassword] = useState("");
+    const [snackbarOpen, showSnackbar] = useState(false);
+
+    const onSubmit = () => {
+        const secret = (password || "") as string;
         if (secret.length > 0) {
             login(secret)
                 .then((token) => {
@@ -50,6 +59,7 @@ function App() {
                 })
                 .catch((error) => {
                     console.warn("Error when logging in", error);
+                    showSnackbar(true);
                 });
         }
     };
@@ -67,6 +77,27 @@ function App() {
                     flexDirection: "column",
                 }}
             >
+                <Snackbar
+                    open={snackbarOpen}
+                    autoHideDuration={5000}
+                    onClose={() => showSnackbar(false)}
+                    anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "center",
+                    }}
+                >
+                    <Alert
+                        sx={{
+                            backgroundColor: "primary.dark",
+                            color: "primary.light",
+                        }}
+                        severity="warning"
+                    >
+                        <Typography variant="body1">
+                            {media.loginError}
+                        </Typography>
+                    </Alert>
+                </Snackbar>
                 <CssBaseline />
                 <BackgroundColor />
                 <Box>
@@ -92,7 +123,6 @@ function App() {
                         >
                             <Box
                                 component="form"
-                                onSubmit={onSubmit}
                                 sx={{
                                     width: "80%",
                                 }}
@@ -110,6 +140,10 @@ function App() {
                                                 width: "50vh",
                                             },
                                         }}
+                                        value={password}
+                                        onChange={(evt) => {
+                                            setPassword(evt.target.value);
+                                        }}
                                     />
                                 </Box>
                                 <Box
@@ -120,7 +154,10 @@ function App() {
                                         mt: 3,
                                     }}
                                 >
-                                    <Button submit text="Logga In" />
+                                    <Button
+                                        onClick={() => onSubmit()}
+                                        text="Logga In"
+                                    />
                                 </Box>
                             </Box>
                         </Box>

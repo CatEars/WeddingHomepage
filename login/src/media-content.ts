@@ -4,12 +4,14 @@ export type MediaContent = {
     iconUrl: string;
     websiteName: string;
     passwordLabel: string;
+    loginError: string;
 };
 
 const defaultMedia: MediaContent = {
     iconUrl: "",
     websiteName: "-",
     passwordLabel: "Lösenord",
+    loginError: "Gick ej att logga in",
 };
 
 export const initializeMedia = async (): Promise<void> => {
