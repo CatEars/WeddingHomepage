@@ -24,6 +24,7 @@ export type InfoMedia = {
 
 export type HeroContent = {
     backgroundUrl: string;
+    portraitBackgroundUrl?: string;
     heroIconUrl?: string;
 };
 

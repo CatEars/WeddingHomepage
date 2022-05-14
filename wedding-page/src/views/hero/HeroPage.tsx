@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, useTheme } from "@mui/material";
 import HeroLayout from "./HeroLayout";
 import text from "../../text-content";
 import media from "../../media-content";
@@ -8,6 +8,7 @@ import BigButton from "../../components/BigButton";
 
 export default function ProductHero() {
     const { cta, scrollToRef } = useScroll();
+    const theme = useTheme();
     return (
         <HeroLayout
             sxBackground={{
@@ -17,6 +18,12 @@ export default function ProductHero() {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 zIndex: -2,
+                [theme.breakpoints.down("sm")]: {
+                    backgroundImage: `url(${
+                        media.hero.portraitBackgroundUrl ??
+                        media.hero.backgroundUrl
+                    })`,
+                },
             }}
         >
             {/* Increase the network loading priority of the background image. */}
