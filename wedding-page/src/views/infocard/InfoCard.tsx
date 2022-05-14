@@ -1,4 +1,3 @@
-import { Box, Typography } from "@mui/material";
 import React from "react";
 import { InfoCardMessage } from "../../text-content";
 import CardText from "./CardText";
