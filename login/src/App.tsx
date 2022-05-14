@@ -99,13 +99,13 @@ function App() {
                             >
                                 <Box>
                                     <TextField
-                                        label="Lösenord"
+                                        label={media.passwordLabel}
                                         variant="outlined"
                                         fullWidth
                                         color="info"
                                         sx={{
                                             mt: 3,
-                                            width: "80%",
+                                            width: "100%",
                                             [theme.breakpoints.up("sm")]: {
                                                 width: "50vh",
                                             },

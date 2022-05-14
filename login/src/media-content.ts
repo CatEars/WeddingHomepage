@@ -3,11 +3,13 @@ import _ from "lodash";
 export type MediaContent = {
     iconUrl: string;
     websiteName: string;
+    passwordLabel: string;
 };
 
 const defaultMedia: MediaContent = {
     iconUrl: "",
     websiteName: "-",
+    passwordLabel: "Lösenord",
 };
 
 export const initializeMedia = async (): Promise<void> => {
