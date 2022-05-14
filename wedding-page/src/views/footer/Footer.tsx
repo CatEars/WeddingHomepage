@@ -1,5 +1,5 @@
-import { Box, Container, Grid, Typography, useTheme } from "@mui/material";
 import React from "react";
+import { Box, Container, Link, Typography, useTheme } from "@mui/material";
 import text from "../../text-content";
 
 type ContactProps = {
@@ -34,42 +34,36 @@ const Footer = () => {
                 sx={{
                     display: "flex",
                     flexDirection: "column",
-                    mt: 20,
-                    mb: 20,
-                    [theme.breakpoints.down("sm")]: {
-                        mt: 10,
-                        mb: 10,
-                    },
+                    mt: 10,
+                    mb: 10,
                 }}
             >
                 <Typography variant="h2" sx={{ color: "primary.main" }}>
                     {text.footer.heading}
                 </Typography>
-                <Typography variant="body1">{text.footer.mail}</Typography>
-                <Grid container spacing={5} sx={{ mt: 5 }}>
-                    <Grid
-                        item
-                        sx={{
-                            [theme.breakpoints.down("sm")]: {
-                                display: "none",
-                            },
-                        }}
-                        xs={12}
-                        md={3}
+                <Typography sx={{ mt: 2 }} variant="body1">
+                    <Link href={`mailto:${text.footer.mail}`}>
+                        {text.footer.mail}
+                    </Link>
+                </Typography>
+                <Box
+                    sx={{
+                        mt: 6,
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                    }}
+                >
+                    <Contact
+                        name={text.footer.contact1.name}
+                        phone={text.footer.contact1.phone}
                     />
-                    <Grid item xs={6} md={3}>
-                        <Contact
-                            name={text.footer.contact1.name}
-                            phone={text.footer.contact1.phone}
-                        />
-                    </Grid>
-                    <Grid item xs={6} md={3}>
-                        <Contact
-                            name={text.footer.contact2.name}
-                            phone={text.footer.contact2.phone}
-                        />
-                    </Grid>
-                </Grid>
+                    <Box sx={{ ml: 10 }} />
+                    <Contact
+                        name={text.footer.contact2.name}
+                        phone={text.footer.contact2.phone}
+                    />
+                </Box>
             </Container>
         </Box>
     );
