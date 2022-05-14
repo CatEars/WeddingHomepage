@@ -32,6 +32,14 @@ export default function ProductHero() {
                 src={media.hero.backgroundUrl}
                 alt="increase priority"
             />
+            {media.hero.portraitBackgroundUrl && (
+                <img
+                    style={{ display: "none" }}
+                    src={media.hero.portraitBackgroundUrl}
+                    alt="increase priority"
+                />
+            )}
+
             {media.hero.heroIconUrl ? (
                 <Box component="img" src={media.hero.heroIconUrl} />
             ) : (
