@@ -24,7 +24,7 @@ def npm_install(folder: str):
 def npm_build(folder: str):
     def impl():
         npm_build_folder = get_relative_directory(folder)
-        subprocess.call(['npm', 'run', 'build', '--production'], cwd=npm_build_folder, shell=True)
+        subprocess.call(['npm', 'run', 'build', '--omit=dev'], cwd=npm_build_folder, shell=True)
     return impl
 
 def copy_build_to_server(source_folder: str, target_folder: str):
