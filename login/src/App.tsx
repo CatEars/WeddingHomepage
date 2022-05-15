@@ -15,28 +15,15 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import { login } from "./api";
-import { serialize } from "cookie";
 import theme from "./theme";
 import media from "./media-content";
 import Button from "./Button";
+import { generateCookie } from "./cookies";
 
 const useCustomWebsiteTitle = (title: string) => {
     useEffect(() => {
         document.title = title;
     }, []);
-};
-
-const generateCookie = (token: string): string => {
-    const currentDate = new Date();
-    const fiveDaysAhead = currentDate.getDate() + 5;
-    const targetDate = new Date();
-    targetDate.setDate(fiveDaysAhead);
-    return serialize("secret_token", token, {
-        expires: targetDate,
-        path: "/",
-        sameSite: true,
-        secure: true,
-    });
 };
 
 function App() {
