@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, TextField, useTheme } from "@mui/material";
 import Button from "./Button";
-import media from "./media-content";
+import media from "../media-content";
 
 type LoginFormProps = {
     onSubmit: () => void;

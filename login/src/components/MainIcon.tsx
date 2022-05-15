@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, useTheme } from "@mui/material";
-import media from "./media-content";
+import media from "../media-content";
 
 const MainIcon = () => {
     const theme = useTheme();
