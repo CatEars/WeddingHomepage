@@ -19,6 +19,7 @@ import theme from "./theme";
 import media from "./media-content";
 import Button from "./Button";
 import { generateCookie } from "./cookies";
+import ErrorSnackbar from "./ErrorSnackbar";
 
 const useCustomWebsiteTitle = (title: string) => {
     useEffect(() => {
@@ -71,27 +72,11 @@ function App() {
                     }}
                 >
                     <CssBaseline />
-                    <Snackbar
+                    <ErrorSnackbar
+                        text={media.loginError}
                         open={snackbarOpen}
-                        autoHideDuration={5000}
                         onClose={() => showSnackbar(false)}
-                        anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "center",
-                        }}
-                    >
-                        <Alert
-                            sx={{
-                                backgroundColor: "primary.dark",
-                                color: "primary.light",
-                            }}
-                            severity="warning"
-                        >
-                            <Typography variant="body1">
-                                {media.loginError}
-                            </Typography>
-                        </Alert>
-                    </Snackbar>
+                    />
                     <Box>
                         <Box
                             component="img"
