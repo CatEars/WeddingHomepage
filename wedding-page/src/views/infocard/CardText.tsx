@@ -22,6 +22,7 @@ const InnerText = (props: { message: InfoCardMessage }) => {
             <>
                 {props.message.map((msg, idx) => (
                     <Typography
+                        key={`info-card-message-${idx}`}
                         sx={{ my: idx === 0 ? 0 : 2 }}
                         variant="body1"
                         textAlign="center"
