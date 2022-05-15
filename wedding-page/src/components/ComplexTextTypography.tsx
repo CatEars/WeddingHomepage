@@ -11,7 +11,7 @@ const renderElement = (element: ComplexMessage, idx: number) => {
         return <span key={`complex-text-span-${idx}`}>{element.text}</span>;
     } else if (element.type === "bold") {
         return (
-            <Box component="span" sx={{ fontWeight: 800 }}>
+            <Box component="span" sx={{ fontWeight: 600 }}>
                 {element.text}
             </Box>
         );
