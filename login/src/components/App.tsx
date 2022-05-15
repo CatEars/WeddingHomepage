@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "@fontsource/playfair-display";
 import "@fontsource/playfair-display/400.css";
 import "@fontsource/open-sans";
 import "@fontsource/open-sans/600.css";
 import { ThemeProvider } from "@mui/material/styles";
 import { Box, Container, CssBaseline } from "@mui/material";
+import { useCustomWebsiteTitle } from "@catears/react-bonus";
 import { login } from "../api";
 import theme from "../theme";
 import media from "../media-content";
@@ -12,12 +13,6 @@ import { generateCookie } from "../cookies";
 import ErrorSnackbar from "./ErrorSnackbar";
 import MainIcon from "./MainIcon";
 import LoginForm from "./LoginForm";
-
-const useCustomWebsiteTitle = (title: string) => {
-    useEffect(() => {
-        document.title = title;
-    }, []);
-};
 
 function App() {
     const [password, setPassword] = useState("");
