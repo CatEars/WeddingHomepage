@@ -9,67 +9,68 @@ import {
     TextField,
 } from "@mui/material";
 import React from "react";
-import { useForm, CtaFormPerson } from "./FormContext";
 import text from "../../text-content";
 import RadioControl from "./RadioControl";
 
 type PersonProps = {
+    willAttend: boolean;
     index: number;
     name: string;
     allergies?: string;
+    setName: (index: number, name: string) => void;
+    setAllergies: (index: number, allergies: string) => void;
+    setFood: (index: number, food: string) => void;
 };
 
-const FoodChoices = (props: PersonProps) => {
-    const { index } = props;
-    const { state, setAllergies, setFood } = useForm()
+const FoodChoices = React.memo((props: PersonProps) => {
+    const { index, allergies, setAllergies, setFood } = props;
     const t = text.cta.person;
 
     return (
-    <>
-        <FormControl>
-            <FormLabel
+        <>
+            <FormControl>
+                <FormLabel
+                    color="info"
+                    sx={{ textAlign: "left", mt: 3, mb: 3 }}
+                >
+                    {t.diet}
+                </FormLabel>
+                <RadioGroup defaultValue="all">
+                    <FormControlLabel
+                        onClick={() => setFood(index, "all")}
+                        value="all"
+                        control={<RadioControl />}
+                        label={t.allEater}
+                    />
+                    <FormControlLabel
+                        onClick={() => setFood(index, "vegetarian")}
+                        value="vegetarian"
+                        control={<RadioControl />}
+                        label={t.vegetarian}
+                    />
+                    <FormControlLabel
+                        onClick={() => setFood(index, "vegan")}
+                        value="vegan"
+                        control={<RadioControl />}
+                        label={t.vegan}
+                    />
+                </RadioGroup>
+            </FormControl>
+            <TextField
+                onChange={(evt) => setAllergies(index, evt.target.value || "")}
+                label={t.allergies}
+                fullWidth
+                variant="outlined"
                 color="info"
-                sx={{ textAlign: "left", mt: 3, mb: 3 }}
-            >
-                {t.diet}
-            </FormLabel>
-            <RadioGroup defaultValue="all">
-                <FormControlLabel
-                    onClick={() => setFood(index, "all")}
-                    value="all"
-                    control={<RadioControl />}
-                    label={t.allEater}
-                />
-                <FormControlLabel
-                    onClick={() => setFood(index, "vegetarian")}
-                    value="vegetarian"
-                    control={<RadioControl />}
-                    label={t.vegetarian}
-                />
-                <FormControlLabel
-                    onClick={() => setFood(index, "vegan")}
-                    value="vegan"
-                    control={<RadioControl />}
-                    label={t.vegan}
-                />
-            </RadioGroup>
-        </FormControl>
-        <TextField
-            onChange={(evt) => setAllergies(index, evt.target.value || "")}
-            label={t.allergies}
-            fullWidth
-            variant="outlined"
-            color="info"
-            sx={{ mt: 2 }}
-            value={state.people[index].allergies}
-        />
-    </>    
+                sx={{ mt: 2 }}
+                value={allergies || ""}
+            />
+        </>
     );
-}
+});
 
-const Person = (props: PersonProps) => {
-    const { index } = props;
-    const { state, setName } = useForm();
+const Person = React.memo((props: PersonProps) => {
+    const { index, name, willAttend, setName } = props;
     const t = text.cta.person;
 
     return (
@@ -90,10 +91,21 @@ const Person = (props: PersonProps) => {
                     mt: 3,
                     mb: 2,
                 }}
-                value={props.name}
+                value={name}
             />
-            {state.willAttend && <FoodChoices index={props.index} name={props.name} />}
+            {willAttend && (
+                <FoodChoices
+                    willAttend={willAttend}
+                    index={props.index}
+                    name={props.name}
+                    allergies={props.allergies}
+                    setAllergies={props.setAllergies}
+                    setFood={props.setFood}
+                    setName={props.setName}
+                />
+            )}
         </Box>
     );
-};
+});
+
 export default Person;
