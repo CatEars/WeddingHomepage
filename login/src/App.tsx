@@ -4,15 +4,7 @@ import "@fontsource/playfair-display/400.css";
 import "@fontsource/open-sans";
 import "@fontsource/open-sans/600.css";
 import { ThemeProvider } from "@mui/material/styles";
-import {
-    Container,
-    CssBaseline,
-    Grid,
-    Snackbar,
-    TextField,
-    Alert,
-    Typography,
-} from "@mui/material";
+import { Container, CssBaseline, Grid, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { login } from "./api";
 import theme from "./theme";
@@ -20,6 +12,7 @@ import media from "./media-content";
 import Button from "./Button";
 import { generateCookie } from "./cookies";
 import ErrorSnackbar from "./ErrorSnackbar";
+import MainIcon from "./MainIcon";
 
 const useCustomWebsiteTitle = (title: string) => {
     useEffect(() => {
@@ -78,16 +71,7 @@ function App() {
                         onClose={() => showSnackbar(false)}
                     />
                     <Box>
-                        <Box
-                            component="img"
-                            src={media.iconUrl}
-                            sx={{
-                                width: "80%",
-                                [theme.breakpoints.up("sm")]: {
-                                    width: "50%",
-                                },
-                            }}
-                        />
+                        <MainIcon />
                     </Box>
                     <Grid container sx={{ justifyContent: "center" }}>
                         <Grid item xs={12} md={8}>
