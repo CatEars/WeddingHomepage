@@ -67,103 +67,109 @@ function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container
-                component="section"
+            <Box
                 sx={{
-                    pt: 10,
-                    pb: 20,
                     minHeight: "100vh",
-                    display: "flex",
-                    flexDirection: "column",
+                    minWidth: "100vw",
                     backgroundColor: "primary.light",
                 }}
             >
-                <CssBaseline />
-                <Snackbar
-                    open={snackbarOpen}
-                    autoHideDuration={5000}
-                    onClose={() => showSnackbar(false)}
-                    anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "center",
+                <Container
+                    component="section"
+                    sx={{
+                        pt: 10,
+                        pb: 20,
+                        display: "flex",
+                        flexDirection: "column",
                     }}
                 >
-                    <Alert
-                        sx={{
-                            backgroundColor: "primary.dark",
-                            color: "primary.light",
+                    <CssBaseline />
+                    <Snackbar
+                        open={snackbarOpen}
+                        autoHideDuration={5000}
+                        onClose={() => showSnackbar(false)}
+                        anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "center",
                         }}
-                        severity="warning"
                     >
-                        <Typography variant="body1">
-                            {media.loginError}
-                        </Typography>
-                    </Alert>
-                </Snackbar>
-                <Box>
-                    <Box
-                        component="img"
-                        src={media.iconUrl}
-                        sx={{
-                            width: "80%",
-                            [theme.breakpoints.up("sm")]: {
-                                width: "50%",
-                            },
-                        }}
-                    />
-                </Box>
-                <Grid container sx={{ justifyContent: "center" }}>
-                    <Grid item xs={12} md={8}>
-                        <Box
+                        <Alert
                             sx={{
-                                display: "flex",
-                                justifyContent: "center",
-                                py: 8,
+                                backgroundColor: "primary.dark",
+                                color: "primary.light",
                             }}
+                            severity="warning"
                         >
+                            <Typography variant="body1">
+                                {media.loginError}
+                            </Typography>
+                        </Alert>
+                    </Snackbar>
+                    <Box>
+                        <Box
+                            component="img"
+                            src={media.iconUrl}
+                            sx={{
+                                width: "80%",
+                                [theme.breakpoints.up("sm")]: {
+                                    width: "50%",
+                                },
+                            }}
+                        />
+                    </Box>
+                    <Grid container sx={{ justifyContent: "center" }}>
+                        <Grid item xs={12} md={8}>
                             <Box
-                                component="form"
                                 sx={{
-                                    width: "80%",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    py: 8,
                                 }}
                             >
-                                <Box>
-                                    <TextField
-                                        label={media.passwordLabel}
-                                        variant="outlined"
-                                        fullWidth
-                                        color="info"
-                                        sx={{
-                                            mt: 3,
-                                            width: "100%",
-                                            [theme.breakpoints.up("sm")]: {
-                                                width: "80%",
-                                            },
-                                        }}
-                                        value={password}
-                                        onChange={(evt) => {
-                                            setPassword(evt.target.value);
-                                        }}
-                                    />
-                                </Box>
                                 <Box
+                                    component="form"
                                     sx={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        justifyContent: "center",
-                                        mt: 3,
+                                        width: "80%",
                                     }}
                                 >
-                                    <Button
-                                        onClick={() => onSubmit()}
-                                        text="Logga In"
-                                    />
+                                    <Box>
+                                        <TextField
+                                            label={media.passwordLabel}
+                                            variant="outlined"
+                                            fullWidth
+                                            color="info"
+                                            sx={{
+                                                mt: 3,
+                                                width: "100%",
+                                                [theme.breakpoints.up("sm")]: {
+                                                    width: "80%",
+                                                },
+                                            }}
+                                            value={password}
+                                            onChange={(evt) => {
+                                                setPassword(evt.target.value);
+                                            }}
+                                        />
+                                    </Box>
+                                    <Box
+                                        sx={{
+                                            display: "flex",
+                                            flexDirection: "row",
+                                            justifyContent: "center",
+                                            mt: 3,
+                                        }}
+                                    >
+                                        <Button
+                                            onClick={() => onSubmit()}
+                                            text="Logga In"
+                                        />
+                                    </Box>
                                 </Box>
                             </Box>
-                        </Box>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Container>
+                </Container>
+            </Box>
         </ThemeProvider>
     );
 }
