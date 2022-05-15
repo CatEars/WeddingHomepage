@@ -26,27 +26,22 @@ const CtaPage = () => {
                 component="section"
                 sx={{ mt: 10, mb: 20, display: "flex" }}
             >
-                <FormProvider>
-                    <Grid container sx={{ justifyContent: "center" }}>
-                        <Grid item xs={12} md={8}>
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    bgcolor: "primary.main",
-                                    py: 8,
-                                }}
-                            >
+                <Grid container sx={{ justifyContent: "center" }}>
+                    <Grid item xs={12} md={8}>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                justifyContent: "center",
+                                bgcolor: "primary.main",
+                                py: 8,
+                            }}
+                        >
+                            <FormProvider>
                                 <CtaForm />
-                            </Box>
-                        </Grid>
-                        {/*
-                            <Grid item xs={12} md={8}>
-                                <DebugFormDisplay />
-                            </Grid>
-                            */}
+                            </FormProvider>
+                        </Box>
                     </Grid>
-                </FormProvider>
+                </Grid>
             </Container>
         </Box>
     );
