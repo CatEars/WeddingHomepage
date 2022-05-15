@@ -12,7 +12,7 @@ import FormSubmitter from "./submit/FormSubmitter";
 import NumPeopleControl from "./NumPeopleControl";
 
 const CtaForm = () => {
-    const { state, setIsSending } = useForm();
+    const { state, setIsSending, setAttend } = useForm();
     const useFakeSubmitter = getFromLocalStorage("WEDDING_FAKE_SUBMIT", "no");
     const t = text.cta.form;
     return (
@@ -27,7 +27,7 @@ const CtaForm = () => {
         >
             <NumPeopleControl />
             <Box sx={{ mt: 3, mb: 2 }}>
-                <WillAttendControl />
+                <WillAttendControl setAttend={(val) => setAttend(val)} />
             </Box>
             {state.people.map((person, idx) => (
                 <Person key={`person-${idx}`} name={person.name} index={idx} />

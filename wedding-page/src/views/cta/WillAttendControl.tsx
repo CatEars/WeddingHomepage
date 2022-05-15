@@ -1,11 +1,14 @@
 import React from "react";
 import { FormControl, RadioGroup, FormControlLabel } from "@mui/material";
-import { useForm } from "./FormContext";
 import text from "../../text-content";
 import RadioControl from "./RadioControl";
 
-const WillAttendControl = () => {
-    const { setAttend } = useForm();
+type WillAttendControlProps = {
+    setAttend: (attending: boolean) => void;
+};
+
+const WillAttendControl = React.memo((props: WillAttendControlProps) => {
+    const { setAttend } = props;
     return (
         <FormControl>
             <RadioGroup defaultValue="yes">
@@ -24,6 +27,6 @@ const WillAttendControl = () => {
             </RadioGroup>
         </FormControl>
     );
-};
+});
 
 export default WillAttendControl;
