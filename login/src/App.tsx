@@ -4,15 +4,15 @@ import "@fontsource/playfair-display/400.css";
 import "@fontsource/open-sans";
 import "@fontsource/open-sans/600.css";
 import { ThemeProvider } from "@mui/material/styles";
-import { Container, CssBaseline, Grid, TextField } from "@mui/material";
+import { Container, CssBaseline } from "@mui/material";
 import { Box } from "@mui/system";
 import { login } from "./api";
 import theme from "./theme";
 import media from "./media-content";
-import Button from "./Button";
 import { generateCookie } from "./cookies";
 import ErrorSnackbar from "./ErrorSnackbar";
 import MainIcon from "./MainIcon";
+import LoginForm from "./LoginForm";
 
 const useCustomWebsiteTitle = (title: string) => {
     useEffect(() => {
@@ -73,57 +73,19 @@ function App() {
                     <Box>
                         <MainIcon />
                     </Box>
-                    <Grid container sx={{ justifyContent: "center" }}>
-                        <Grid item xs={12} md={8}>
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    py: 8,
-                                }}
-                            >
-                                <Box
-                                    component="form"
-                                    sx={{
-                                        width: "80%",
-                                    }}
-                                >
-                                    <Box>
-                                        <TextField
-                                            label={media.passwordLabel}
-                                            variant="outlined"
-                                            fullWidth
-                                            color="info"
-                                            sx={{
-                                                mt: 3,
-                                                width: "100%",
-                                                [theme.breakpoints.up("sm")]: {
-                                                    width: "80%",
-                                                },
-                                            }}
-                                            value={password}
-                                            onChange={(evt) => {
-                                                setPassword(evt.target.value);
-                                            }}
-                                        />
-                                    </Box>
-                                    <Box
-                                        sx={{
-                                            display: "flex",
-                                            flexDirection: "row",
-                                            justifyContent: "center",
-                                            mt: 3,
-                                        }}
-                                    >
-                                        <Button
-                                            onClick={() => onSubmit()}
-                                            text="Logga In"
-                                        />
-                                    </Box>
-                                </Box>
-                            </Box>
-                        </Grid>
-                    </Grid>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            py: 8,
+                        }}
+                    >
+                        <LoginForm
+                            password={password}
+                            setPassword={setPassword}
+                            onSubmit={onSubmit}
+                        />
+                    </Box>
                 </Container>
             </Box>
         </ThemeProvider>
