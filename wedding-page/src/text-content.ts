@@ -7,14 +7,20 @@ export type HeroTextContent = {
     buttonText: string;
 };
 
-export type ComplexMessage = {
-    type: 'link';
-    displayText: string;
-    link: string;
-} | {
-    type: 'text';
-    text: string;
-}
+export type ComplexMessage =
+    | {
+          type: "link";
+          displayText: string;
+          link: string;
+      }
+    | {
+          type: "text";
+          text: string;
+      }
+    | {
+          type: "bold";
+          text: string;
+      };
 
 export type InfoCardMessage = string | string[] | ComplexMessage[][];
 
@@ -94,7 +100,7 @@ export type CtaFormContent = {
 
 export type CtaHeader = {
     main: string;
-    subtexts: string[];
+    subtexts: string[] | ComplexMessage[][];
     link: string;
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, Typography } from "@mui/material";
-import { ComplexMessage } from "../../text-content";
+import { Box, Link, Typography } from "@mui/material";
+import { ComplexMessage } from "../text-content";
 
 type ComplexTextTypographyProps = {
     message: ComplexMessage[][];
@@ -9,6 +9,12 @@ type ComplexTextTypographyProps = {
 const renderElement = (element: ComplexMessage, idx: number) => {
     if (element.type === "text") {
         return <span key={`complex-text-span-${idx}`}>{element.text}</span>;
+    } else if (element.type === "bold") {
+        return (
+            <Box component="span" sx={{ fontWeight: 800 }}>
+                {element.text}
+            </Box>
+        );
     } else {
         return (
             <Link

@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { InfoCardMessage } from "../../text-content";
-import ComplexTextTypography from "./ComplexTextTypography";
+import ComplexTextTypography from "../../components/ComplexTextTypography";
 
 type CardTextProps = {
     header: string;

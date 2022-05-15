@@ -3,6 +3,7 @@ import "@fontsource/playfair-display";
 import "@fontsource/playfair-display/400.css";
 import "@fontsource/open-sans";
 import "@fontsource/open-sans/600.css";
+import "@fontsource/open-sans/800.css";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 import HeroPage from "./views/hero/HeroPage";
