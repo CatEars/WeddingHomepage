@@ -23,6 +23,7 @@ const CtaForm = () => {
     } = useForm();
     const useFakeSubmitter = getFromLocalStorage("WEDDING_FAKE_SUBMIT", "no");
     const t = text.cta.form;
+    const anyoneUnnamed = state.people.some((person) => person.name === "");
     return (
         <Box
             component="form"
@@ -61,7 +62,7 @@ const CtaForm = () => {
                 }}
             >
                 <Button
-                    disabled={state.status !== "input"}
+                    disabled={anyoneUnnamed || state.status !== "input"}
                     loading={state.status === "isSending"}
                     text={t.sendRsvp}
                     onClick={() => {
