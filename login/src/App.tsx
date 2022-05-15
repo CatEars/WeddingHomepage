@@ -17,7 +17,6 @@ import { Box } from "@mui/system";
 import { login } from "./api";
 import { serialize } from "cookie";
 import theme from "./theme";
-import BackgroundColor from "./BackgroundColor";
 import media from "./media-content";
 import Button from "./Button";
 
@@ -71,12 +70,15 @@ function App() {
             <Container
                 component="section"
                 sx={{
-                    mt: 10,
-                    mb: 20,
+                    pt: 10,
+                    pb: 20,
+                    minHeight: "100vh",
                     display: "flex",
                     flexDirection: "column",
+                    backgroundColor: "primary.light",
                 }}
             >
+                <CssBaseline />
                 <Snackbar
                     open={snackbarOpen}
                     autoHideDuration={5000}
@@ -98,8 +100,6 @@ function App() {
                         </Typography>
                     </Alert>
                 </Snackbar>
-                <CssBaseline />
-                <BackgroundColor />
                 <Box>
                     <Box
                         component="img"
@@ -107,7 +107,7 @@ function App() {
                         sx={{
                             width: "80%",
                             [theme.breakpoints.up("sm")]: {
-                                width: "50vh",
+                                width: "50%",
                             },
                         }}
                     />
@@ -137,7 +137,7 @@ function App() {
                                             mt: 3,
                                             width: "100%",
                                             [theme.breakpoints.up("sm")]: {
-                                                width: "50vh",
+                                                width: "80%",
                                             },
                                         }}
                                         value={password}
