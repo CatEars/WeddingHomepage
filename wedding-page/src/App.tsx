@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "@fontsource/playfair-display";
 import "@fontsource/playfair-display/400.css";
 import "@fontsource/open-sans";
 import "@fontsource/open-sans/600.css";
 import "@fontsource/open-sans/800.css";
 import { ThemeProvider } from "@mui/material/styles";
+import { useCustomWebsiteTitle } from "@catears/react-bonus";
 import theme from "./theme";
 import HeroPage from "./views/hero/HeroPage";
 import InfoCards from "./views/infocard/InfocardPage";
@@ -16,14 +17,8 @@ import "./base.css";
 import text from "./text-content";
 import Footer from "./views/footer/Footer";
 
-const useCustomWebsiteTitle = () => {
-    useEffect(() => {
-        document.title = text.title ?? "-";
-    }, []);
-};
-
 const App = () => {
-    useCustomWebsiteTitle();
+    useCustomWebsiteTitle(text.title || "-");
     return (
         <ThemeProvider theme={theme}>
             <ScrollToContextProvider>
