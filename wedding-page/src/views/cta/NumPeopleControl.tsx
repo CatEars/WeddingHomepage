@@ -1,10 +1,14 @@
 import React from "react";
 import { TextField } from "@mui/material";
-import { useForm } from "./FormContext";
 import text from "../../text-content";
 
-const NumPeopleControl = () => {
-    const { state, setNumPeople } = useForm();
+type NumPeopleControlProps = {
+    setNumPeople: (numberOfPeople: number) => void;
+    numPeople: number;
+};
+
+const NumPeopleControl = React.memo((props: NumPeopleControlProps) => {
+    const { numPeople, setNumPeople } = props;
     const onNumPeopleChange = (
         event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
@@ -21,9 +25,9 @@ const NumPeopleControl = () => {
             label={text.cta.form.numberOfPeople}
             onChange={onNumPeopleChange}
             type="number"
-            value={state.numberOfAttendingPeople}
+            value={numPeople}
         />
     );
-};
+});
 
 export default NumPeopleControl;
