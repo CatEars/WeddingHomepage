@@ -57,7 +57,11 @@ const MapPage = () => {
                     {text.map.subtext}
                 </Typography>
                 <Typography variant="body1">{text.map.coordinates}</Typography>
-                <Link sx={{ color: "#000" }} href={media.map.link}>
+                <Link
+                    target="_blank"
+                    sx={{ color: "#000" }}
+                    href={media.map.link}
+                >
                     <Typography sx={{ mt: 2 }} variant="body1">
                         {text.map.link}
                     </Typography>

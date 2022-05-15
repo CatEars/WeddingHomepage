@@ -23,7 +23,11 @@ const LinkInfoCard = (props: LinkInfoCardProps) => (
         <CardText header={props.header} message={props.message} />
         {props.links.map((link, idx) => (
             <Typography key={`card-link-${idx}`} variant="body1" sx={{ mt: 2 }}>
-                <Link sx={{ color: "primary.dark" }} href={link.href}>
+                <Link
+                    target="_blank"
+                    sx={{ color: "primary.dark" }}
+                    href={link.href}
+                >
                     {link.displayText}
                 </Link>
             </Typography>

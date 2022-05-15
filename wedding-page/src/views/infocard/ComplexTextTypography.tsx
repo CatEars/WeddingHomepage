@@ -12,6 +12,7 @@ const renderElement = (element: ComplexMessage, idx: number) => {
     } else {
         return (
             <Link
+                target="_blank"
                 key={`complex-link-span-${idx}`}
                 sx={{ color: "primary.dark" }}
                 href={element.link}
