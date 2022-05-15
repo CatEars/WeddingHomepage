@@ -22,8 +22,40 @@ type PersonProps = {
     setFood: (index: number, food: string) => void;
 };
 
+const FoodRadios = React.memo(
+    (props: {
+        index: number;
+        setFood: (index: number, food: string) => void;
+    }) => {
+        const { index, setFood } = props;
+        const t = text.cta.person;
+        return (
+            <RadioGroup defaultValue="all">
+                <FormControlLabel
+                    onClick={() => setFood(index, "all")}
+                    value="all"
+                    control={<RadioControl />}
+                    label={t.allEater}
+                />
+                <FormControlLabel
+                    onClick={() => setFood(index, "vegetarian")}
+                    value="vegetarian"
+                    control={<RadioControl />}
+                    label={t.vegetarian}
+                />
+                <FormControlLabel
+                    onClick={() => setFood(index, "vegan")}
+                    value="vegan"
+                    control={<RadioControl />}
+                    label={t.vegan}
+                />
+            </RadioGroup>
+        );
+    }
+);
+
 const FoodChoices = React.memo((props: PersonProps) => {
-    const { index, allergies, setAllergies, setFood } = props;
+    const { index, allergies, setAllergies } = props;
     const t = text.cta.person;
 
     return (
@@ -35,26 +67,7 @@ const FoodChoices = React.memo((props: PersonProps) => {
                 >
                     {t.diet}
                 </FormLabel>
-                <RadioGroup defaultValue="all">
-                    <FormControlLabel
-                        onClick={() => setFood(index, "all")}
-                        value="all"
-                        control={<RadioControl />}
-                        label={t.allEater}
-                    />
-                    <FormControlLabel
-                        onClick={() => setFood(index, "vegetarian")}
-                        value="vegetarian"
-                        control={<RadioControl />}
-                        label={t.vegetarian}
-                    />
-                    <FormControlLabel
-                        onClick={() => setFood(index, "vegan")}
-                        value="vegan"
-                        control={<RadioControl />}
-                        label={t.vegan}
-                    />
-                </RadioGroup>
+                <FoodRadios index={props.index} setFood={props.setFood} />
             </FormControl>
             <TextField
                 onChange={(evt) => setAllergies(index, evt.target.value || "")}
