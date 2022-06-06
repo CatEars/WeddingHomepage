@@ -1,5 +1,11 @@
 import React from "react";
-import { TextField } from "@mui/material";
+import {
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    SelectChangeEvent,
+} from "@mui/material";
 import text from "../../text-content";
 
 type NumPeopleControlProps = {
@@ -9,24 +15,36 @@ type NumPeopleControlProps = {
 
 const NumPeopleControl = React.memo((props: NumPeopleControlProps) => {
     const { numPeople, setNumPeople } = props;
-    const onNumPeopleChange = (
-        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-        const num = Number.parseInt(event.target.value);
+    const onNumPeopleChange = (event: SelectChangeEvent<number>) => {
+        const num =
+            typeof event.target.value === "string"
+                ? Number.parseInt(event.target.value)
+                : event.target.value;
         if (num) {
             setNumPeople(num);
         }
     };
 
     return (
-        <TextField
-            fullWidth
-            color="info"
-            label={text.cta.form.numberOfPeople}
-            onChange={onNumPeopleChange}
-            type="number"
-            value={numPeople}
-        />
+        <FormControl color="info" fullWidth>
+            <InputLabel id="num-people-label">
+                {text.cta.form.numberOfPeople}
+            </InputLabel>
+            <Select
+                labelId="num-people-label"
+                value={numPeople}
+                label={text.cta.form.numberOfPeople}
+                onChange={onNumPeopleChange}
+                sx={{ textAlign: "left" }}
+            >
+                <MenuItem value={1}>1</MenuItem>
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={3}>3</MenuItem>
+                <MenuItem value={4}>4</MenuItem>
+                <MenuItem value={5}>5</MenuItem>
+                <MenuItem value={6}>6</MenuItem>
+            </Select>
+        </FormControl>
     );
 });
 
