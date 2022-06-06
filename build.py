@@ -44,7 +44,22 @@ def build_docker(folder: str):
         subprocess.call(['docker', 'build', '.', '-t', tag], cwd=server_folder, shell=True)
     return impl
 
+def save_docker(folder: str):
+    def impl():
+        output_folder = get_relative_directory(folder)
+        version_name_like_filename = docker_tag.replace(':', '_')
+        filename = f'{version_name_like_filename}.tar.gz'
+        output_path = os.path.join(output_folder, filename)
+        subprocess.call(['docker', 'save', '-o', output_path, docker_tag])
+    return impl        
+
+def ensure_docker_started():
+    def impl():
+        subprocess.call(['docker', 'ps'])
+    return impl   
+
 steps = [
+    ('Ensure docker is installed and running by calling `docker ps`', ensure_docker_started()),
     ('Ensure Wedding Page Custom Content Folder Exists', ensure_directory_exists('./wedding-page/src/content')),
     ('NPM Install for server', npm_install('server')),
     ('NPM Install for Login Page', npm_install('login')),
@@ -55,6 +70,8 @@ steps = [
     ('Copy content folder for Login Page to Server', copy_build_to_server('./login/build', './server/login-build')),
     ('Copy content folder for Wedding Page to Server', copy_build_to_server('./wedding-page/build', './server/content-build')),
     ('Build Docker image for Server', build_docker('server')),
+    ('Ensure docker image output folder exists', ensure_directory_exists('./docker-images')),
+    ('Saving built docker image', save_docker('./docker-images')),
 ]
 
 for name, step in steps:
